@@ -35,6 +35,11 @@
     @media (prefers-reduced-motion: reduce) {
       .shop-card, .shop-card * { transition: none !important; animation: none !important; }
     }
+    .shop-card-wrap:hover .shop-card {
+      --fruit-o: 1;
+      --fruit-s: 1;
+      --fruit-t: opacity 0.3s ease 0.15s, transform 0.3s ease 0.15s;
+    }
   </style>
 </helmet>
 
@@ -500,11 +505,13 @@ class Component extends DCLogic {
       });
     });
 
-    // ---------- Liquid wave clip-path hover animation for Shop Cards ----------
-    const shopCards = Array.from(document.querySelectorAll('.shop-card'));
+    // ---------- Liquid wave clip-path hover animation for Shop Cards & Add to Cart ----------
+    const shopCardWraps = Array.from(document.querySelectorAll('.shop-card-wrap'));
     const cardCleanups = [];
 
-    shopCards.forEach((cardEl) => {
+    shopCardWraps.forEach((wrapEl) => {
+      const cardEl = wrapEl.querySelector('.shop-card');
+      if (!cardEl) return;
       const fillEl = cardEl.querySelector('.shop-fill');
       if (!fillEl) return;
 
@@ -517,7 +524,7 @@ class Component extends DCLogic {
         const p = state.p;
         const base = 100 - p * 100;
         const speedDiff = Math.abs(state.targetP - state.p);
-        const amp = speedDiff > 0.02 ? 5.5 : 2.5;
+        const amp = speedDiff > 0.02 ? 5.0 : 2.5;
         const pts = [];
         const N = 10;
         for (let i = 0; i <= N; i++) {
@@ -539,7 +546,7 @@ class Component extends DCLogic {
       };
 
       const onEnter = () => {
-        state.targetP = 1.0;
+        state.targetP = 0.80; // Fills up to 80% on hover
         startAnim();
       };
 
@@ -548,12 +555,12 @@ class Component extends DCLogic {
         startAnim();
       };
 
-      cardEl.addEventListener('mouseenter', onEnter);
-      cardEl.addEventListener('mouseleave', onLeave);
+      wrapEl.addEventListener('mouseenter', onEnter);
+      wrapEl.addEventListener('mouseleave', onLeave);
 
       cardCleanups.push(() => {
-        cardEl.removeEventListener('mouseenter', onEnter);
-        cardEl.removeEventListener('mouseleave', onLeave);
+        wrapEl.removeEventListener('mouseenter', onEnter);
+        wrapEl.removeEventListener('mouseleave', onLeave);
         if (animFrameId) cancelAnimationFrame(animFrameId);
       });
 
