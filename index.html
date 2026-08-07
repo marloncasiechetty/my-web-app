@@ -1171,7 +1171,7 @@ class Component extends DCLogic {
       gsap.registerPlugin(ScrollTrigger);
 
       gsap.set(aboutTags, { opacity: 0, y: 18 });
-      gsap.set(aboutPhotoWrap, { opacity: 0, scale: 0.92 });
+      gsap.set(aboutPhotoWrap, { opacity: 0, xPercent: -100, rotation: -6 });
       gsap.set(aboutCopyBlock, { opacity: 0, y: 24 });
       gsap.set(aboutGridItems, { opacity: 0, scale: 0.94 });
       gsap.set(aboutGridCaptions, { opacity: 0 });
@@ -1187,11 +1187,17 @@ class Component extends DCLogic {
 
       ScrollTrigger.create({
         trigger: aboutSection,
-        start: 'top 55%',
-        once: true,
-        onEnter: () => {
-          gsap.to(aboutPhotoWrap, { opacity: 1, scale: 1, duration: 0.9, ease: 'power2.out' });
-          aboutPhotoIdleStart();
+        start: 'top 85%',
+        end: 'top 25%',
+        scrub: 0.8,
+        onUpdate: (self) => {
+          const p = self.progress;
+          const xPct = (1 - p) * -100;
+          const rot = (1 - p) * -6;
+          gsap.set(aboutPhotoWrap, { opacity: Math.min(1, p * 1.5), xPercent: xPct, rotation: rot });
+          if (p >= 0.95 && !aboutPhotoIdleTween) {
+            aboutPhotoIdleStart();
+          }
         },
       });
 
