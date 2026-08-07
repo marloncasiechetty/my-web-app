@@ -39,7 +39,7 @@
 
 <div id="about-root" style="position:relative;width:100%;font-family:'Satoshi',sans-serif;font-weight:400;background:#ffffff;color:#1F0A0A;overflow:hidden;">
 
-  <header style="display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px;position:absolute;top:16px;left:16px;right:16px;border-radius:16px;background:#F6F6F6;z-index:100;box-sizing:border-box;">
+  <header style="display:flex;justify-content:space-between;align-items:center;gap:24px;padding:16px 24px;position:fixed;top:16px;left:16px;right:16px;border-radius:16px;background:#F6F6F6;z-index:999;box-sizing:border-box;box-shadow:0 4px 20px rgba(0,0,0,0.06);">
     <div style="display:flex;align-items:center;gap:32px;flex-shrink:0;">
       <button id="nav-menu-btn" aria-label="Menu" aria-expanded="false" style="width:24px;height:24px;flex-shrink:0;padding:0;border:none;background:none;color:#000000;cursor:pointer;display:flex;align-items:center;justify-content:center;position:relative;">
         <svg id="menu-icon-bars" width="19" height="15" viewBox="0 0 19 15" fill="none" style="position:absolute;transition:opacity 0.2s ease;"><path d="M1 1.5h17M1 7.5h17M1 13.5h17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
@@ -54,7 +54,7 @@
           <path d="M152.97,62.82c1.93,2.97,3.73,5.29,5.4,6.96,1.67,1.67,3.68,3.17,6.02,4.51,2.34,1.34,4.88,1.86,7.63,1.56,2.23-.22,4.16-.93,5.79-2.12,1.63-1.19,2.82-2.75,3.57-4.68.89-2.38,1.04-4.85.45-7.41-.6-2.56-1.86-4.92-3.79-7.07-2.38-2.6-4.75-5.11-7.13-7.52-2.38-2.41-4.98-4.92-7.8-7.52l-1.67-1.56c-3.27-3.12-5.85-6.09-7.74-8.91-1.89-2.82-3.03-5.64-3.4-8.47-.37-2.82-.13-5.48.73-7.97.85-2.49,2.24-4.7,4.18-6.63,2.08-2.08,4.47-3.62,7.19-4.62,2.71-1,5.48-1.39,8.3-1.17,2.52.22,4.77.8,6.74,1.73,1.97.93,3.64,1.91,5.01,2.95,1.37,1.04,2.8,2.41,4.29,4.12l-7.13,5.79c-.45-.59-1.06-1.41-1.84-2.45-.78-1.04-1.73-2.08-2.84-3.12-1.11-1.04-2.36-1.95-3.73-2.73-1.38-.78-2.84-1.17-4.4-1.17-1.71,0-3.31.46-4.79,1.39-1.49.93-2.64,2.14-3.45,3.62-.82,1.63-1.21,3.38-1.17,5.24.04,1.86.58,3.75,1.62,5.68.67,1.11,1.58,2.38,2.73,3.79,1.15,1.41,2.43,2.82,3.84,4.23,1.41,1.41,2.84,2.82,4.29,4.23,1.45,1.41,2.8,2.68,4.07,3.79,1.56,1.41,3.14,2.86,4.74,4.35,1.6,1.49,3.12,3.05,4.57,4.68,1.45,1.63,2.71,3.34,3.79,5.13,1.08,1.78,1.87,3.64,2.4,5.57.74,2.82.93,5.51.56,8.08-.37,2.56-1.23,4.88-2.56,6.96-1.93,2.9-4.57,5.07-7.91,6.52s-6.87,2.17-10.59,2.17c-3.86,0-7.22-.63-10.08-1.89-2.86-1.26-5.24-2.68-7.13-4.23-1.89-1.56-3.81-3.64-5.74-6.24l7.02-5.57Z"></path>
           <path d="M199.21,1.43h36.21s0,4.46,0,4.46h-27.85s0,36.77,0,36.77h24.4s0,4.46,0,4.46h-24.4s0,27.85,0,27.85h29.64s0,4.46,0,4.46h-37.99s0-77.99,0-77.99Z"></path>
           <path d="M332.01,79.42h-8.36s0-77.99,0-77.99h8.36s0,77.99,0,77.99Z"></path>
-          <path d="M347.39,62.82c1.93,2.97,3.73,5.29,5.4,6.96,1.67,1.67,3.68,3.17,6.02,4.51,2.34,1.34,4.88,1.86,7.63,1.56,2.23-.22,4.16-.93,5.79-2.12,1.63-1.19,2.82-2.75,3.57-4.68.89-2.38,1.04-4.85.45-7.41-.6-2.56-1.86-4.92-3.79-7.07-2.38-2.6-4.75-5.11-7.13-7.52-2.38-2.41-4.98-4.92-7.8-7.52l-1.67-1.56c-3.27-3.12-5.85-6.09-7.74-8.91-1.89-2.82-3.03-5.64-3.4-8.47-.37-2.82-.13-5.48.73-7.97.85-2.49,2.24-4.7,4.18-6.63,2.08-2.08,4.47-3.62,7.19-4.62,2.71-1,5.48-1.39,8.3-1.17,2.52.22,4.77.8,6.74,1.73,1.97.93,3.64,1.91,5.01,2.95,1.37,1.04,2.8,2.41,4.29,4.12l-7.13,5.79c-.45-.59-1.06-1.41-1.84-2.45-.78-1.04-1.73-2.08-2.84-3.12-1.11-1.04-2.36-1.95-3.73-2.73-1.38-.78-2.84-1.17-4.4-1.17-1.71,0-3.31.46-4.79,1.39-1.49.93-2.64,2.14-3.45,3.62-.82,1.63-1.21,3.38-1.17,5.24.04,1.86.58,3.75,1.62,5.68.67,1.11,1.58,2.38,2.73,3.79,1.15,1.41,2.43,2.82,3.84,4.23,1.41,1.41,2.84,2.82,4.29,4.23,1.45,1.41,2.8,2.68,4.07,3.79,1.56,1.41,3.14,2.86,4.74,4.35,1.6,1.49,3.12,3.05,4.57,4.68,1.45,1.63,2.71,3.34,3.79,5.13,1.08,1.78,1.87,3.64,2.4,5.57.74,2.82.93,5.51.56,8.08-.37,2.56-1.23,4.88-2.56,6.96-1.93,2.9-4.57,5.07-7.91,6.52-3.34,1.45-6.87,2.17-10.59,2.17-3.86,0-7.22-.63-10.08-1.89-2.86-1.26-5.24-2.68-7.13-4.23-1.89-1.56-3.81-3.64-5.74-6.24l7.02-5.57Z"></path>
+          <path d="M347.39,62.82c1.93,2.97,3.73,5.29,5.4,6.96,1.67,1.67,3.68,3.17,6.02,4.51,2.34,1.34,4.88,1.86,7.63,1.56,2.23-.22,4.16-.93,5.79-2.12,1.63-1.19,2.82-2.75,3.57-4.68.89-2.38,1.04-4.85.45-7.41-.6-2.56-1.86-4.92-3.79-7.07-2.38-2.6-4.75-5.11-7.13-7.52-2.38-2.41-4.98-4.92-7.8-7.52l-1.67-1.56c-3.27-3.12-5.85-6.09-7.74-8.91-1.89-2.82-3.03-5.64-3.4-8.47-.37-2.82-.13-5.48.73-7.97.85-2.49,2.24-4.7,4.18-6.63,2.08-2.08,4.47-3.62,7.19-4.62,2.71-1,5.48-1.39,8.3-1.17,2.52.22,4.77.8,6.74,1.73,1.97.93,3.64,1.91,5.01,2.95,1.37,1.04,2.8,2.41,4.29,4.12l-7.13,5.79c-.45-.59-1.06-1.41-1.84-2.45-.78-1.04-1.73-2.08-2.84-3.12-1.11-1.04-2.36-1.95-3.73-2.73-1.38-.78-2.84-1.17-4.4-1.17-1.71,0-3.31.46-4.79,1.39-1.49.93-2.64,2.14-3.45,3.62-.82,1.63-1.21,3.38-1.17,5.24.04,1.86.58,3.75,1.62,5.68.67,1.11,1.58,2.38,2.73,3.79,1.15,1.41,2.43,2.82,3.84,4.23,1.41,1.41,2.84,2.82,4.29,4.23,1.45,1.41,2.8,2.68,4.07,3.79,1.56,1.41,3.14,2.86,4.74,4.35,1.6,1.49,3.12,3.05,4.57,4.68,1.45,1.63,2.71,3.34,3.79,5.13,1.08,1.78,1.87,3.64,2.4,5.57.74,2.82,9.51.56,8.08-.37,2.56-1.23,4.88-2.56,6.96-1.93,2.9-4.57,5.07-7.91,6.52s-6.87,2.17-10.59,2.17c-3.86,0-7.22-.63-10.08-1.89-2.86-1.26-5.24-2.68-7.13-4.23-1.89-1.56-3.81-3.64-5.74-6.24l7.02-5.57Z"></path>
           <path d="M412.51,79.42h-19s0-77.99,0-77.99h8.36s0,73.54,0,73.54h10.64s0,4.46,0,4.46Z"></path>
           <path d="M440.15.1h1.89s23.29,79.33,23.29,79.33h-8.69s-3.45-11.59-3.45-11.59h-27.63s-3.23,11.59-3.23,11.59h-4.68S440.15.1,440.15.1ZM426.89,63.38h24.96s-12.7-43.34-12.7-43.34l-12.26,43.34Z"></path>
           <path d="M473.13,79.42V1.43s5.01,0,5.01,0l38.33,58.72V1.43s4.46,0,4.46,0v79.33s-1.89,0-1.89,0l-41.45-63.62v62.28s-4.46,0-4.46,0Z"></path>
@@ -112,27 +112,39 @@
     </div>
   </div>
 
-  <section id="about-hero-pin" style="position:relative;width:100%;height:100vh;overflow:hidden;background:#ffffff;">
-    <div id="about-hero-sticky" style="position:sticky;top:0;width:100%;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;box-sizing:border-box;padding-top:calc(130px + 3vh);">
-      <div style="text-align:center;max-width:760px;padding:0 6%;display:flex;flex-direction:column;align-items:center;gap:1rem;z-index:2;">
-        <h1 style="font-family:'Florensans','Galada',cursive;font-weight:400;font-size:clamp(2.6rem,6vw,5.6rem);color:#1F0A0A;margin:0;line-height:1.02;text-transform:uppercase;">About Us</h1>
-        <p style="color:rgba(31,10,10,0.55);font-size:1.05rem;line-height:1.6;max-width:520px;margin:0;">Born from a love of the tropics and a refusal to settle for boring soda.<br>Here's the story behind every can.</p>
+  <section id="about-hero-pin" style="position:relative;width:100%;min-height:100vh;overflow:hidden;background:#ffffff;padding-top:110px;box-sizing:border-box;">
+    <div id="about-hero-sticky" style="position:relative;width:100%;max-width:1250px;margin:0 auto;padding:2rem 2rem 4rem;display:flex;flex-direction:column;align-items:center;box-sizing:border-box;">
+      <div style="text-align:center;max-width:780px;display:flex;flex-direction:column;align-items:center;gap:1.2rem;z-index:2;margin-bottom:2.5rem;">
+        <h1 style="font-family:'Florensans','Galada',cursive;font-weight:400;font-size:clamp(3.2rem,6.8vw,6.2rem);color:#050505;margin:0;line-height:1.0;text-transform:uppercase;letter-spacing:-0.01em;">ABOUT US</h1>
+        <p style="font-family:'Satoshi',sans-serif;font-weight:400;color:rgba(5,5,5,0.72);font-size:clamp(1rem,1.4vw,1.18rem);line-height:1.6;max-width:620px;margin:0;">Dose of Island is more than a drink &mdash; it's an invitation to slow down, celebrate flavor, and carry the carefree energy of the tropics wherever you go.</p>
       </div>
-      <div id="about-photo-field" style="position:relative;width:100%;max-width:1100px;height:40vh;margin-top:3vh;flex-shrink:0;">
-        <div class="about-scatter-photo" data-rot="-6" style="position:absolute;left:1%;top:12%;width:19%;max-width:210px;aspect-ratio:3/4;">
-          <image-slot placeholder="Lifestyle photo 1" shape="rect" radius="14" fit="cover" style="width:100%;height:100%;box-shadow:0 18px 30px rgba(31,10,10,0.18);"></image-slot>
+
+      <!-- 5 Overlapping Images Layout Matching Reference Design -->
+      <div id="about-photo-field" style="position:relative;width:100%;max-width:1150px;display:flex;align-items:flex-start;justify-content:center;box-sizing:border-box;margin-top:1rem;">
+        <div class="about-card about-card-1" style="width:20%;margin-top:55px;z-index:1;flex-shrink:0;">
+          <div style="width:100%;aspect-ratio:3/4;border-radius:24px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,0.12);background:#eaeaea;">
+            <img src="uploads/about-img-1.jpg" alt="Dose of Island Friends" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
         </div>
-        <div class="about-scatter-photo" data-rot="4" style="position:absolute;left:21%;top:0%;width:17%;max-width:190px;aspect-ratio:4/5;">
-          <image-slot placeholder="Lifestyle photo 2" shape="rect" radius="14" fit="cover" style="width:100%;height:100%;box-shadow:0 18px 30px rgba(31,10,10,0.18);"></image-slot>
+        <div class="about-card about-card-2" style="width:21%;margin-top:105px;margin-left:-3.5%;z-index:3;flex-shrink:0;">
+          <div style="width:100%;aspect-ratio:3/4.2;border-radius:24px;overflow:hidden;box-shadow:0 22px 45px rgba(0,0,0,0.15);background:#eaeaea;">
+            <img src="uploads/about-img-2.jpg" alt="Dose of Island Sunset" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
         </div>
-        <div class="about-scatter-photo" data-rot="-2" style="position:absolute;left:40%;top:18%;width:21%;max-width:236px;aspect-ratio:1/1;">
-          <image-slot placeholder="Lifestyle photo 3" shape="rect" radius="14" fit="cover" style="width:100%;height:100%;box-shadow:0 18px 30px rgba(31,10,10,0.18);"></image-slot>
+        <div class="about-card about-card-3" style="width:22%;margin-top:0px;margin-left:-3%;z-index:2;flex-shrink:0;">
+          <div style="width:100%;aspect-ratio:4/3.2;border-radius:24px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,0.12);background:#eaeaea;">
+            <img src="uploads/about-img-3.jpg" alt="Dose of Island Beach Starfish" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
         </div>
-        <div class="about-scatter-photo" data-rot="5" style="position:absolute;left:63%;top:4%;width:18%;max-width:200px;aspect-ratio:4/5;">
-          <image-slot placeholder="Lifestyle photo 4" shape="rect" radius="14" fit="cover" style="width:100%;height:100%;box-shadow:0 18px 30px rgba(31,10,10,0.18);"></image-slot>
+        <div class="about-card about-card-4" style="width:21%;margin-top:95px;margin-left:-3.5%;z-index:4;flex-shrink:0;">
+          <div style="width:100%;aspect-ratio:3/4.2;border-radius:24px;overflow:hidden;box-shadow:0 22px 45px rgba(0,0,0,0.15);background:#eaeaea;">
+            <img src="uploads/about-img-4.jpg" alt="Dose of Island Tropics" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
         </div>
-        <div class="about-scatter-photo" data-rot="-4" style="position:absolute;left:81%;top:16%;width:19%;max-width:210px;aspect-ratio:3/4;">
-          <image-slot placeholder="Lifestyle photo 5" shape="rect" radius="14" fit="cover" style="width:100%;height:100%;box-shadow:0 18px 30px rgba(31,10,10,0.18);"></image-slot>
+        <div class="about-card about-card-5" style="width:20%;margin-top:25px;margin-left:-3%;z-index:1;flex-shrink:0;">
+          <div style="width:100%;aspect-ratio:3/4;border-radius:24px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,0.12);background:#eaeaea;">
+            <img src="uploads/about-img-5.jpg" alt="Dose of Island Beach Life" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </div>
         </div>
       </div>
     </div>
@@ -480,23 +492,47 @@ class Component extends DCLogic {
       return st;
     };
 
-    // ---------- Section 1: scattered photo reveal ----------
+    // ---------- Section 1: Scroll-triggered sequential card reveal & reverse ----------
     const heroPinEl = document.getElementById('about-hero-pin');
-    const photos = Array.from(document.querySelectorAll('.about-scatter-photo'));
-    photos.forEach(el => gsap.set(el, { rotation: Number(el.dataset.rot) || 0, opacity: prefersReducedMotion ? 1 : 0, y: prefersReducedMotion ? 0 : 44, scale: prefersReducedMotion ? 1 : 0.85 }));
-    const st1 = stepReveal(heroPinEl, photos.length, '110%', (i, instant) => {
-      const el = photos[i]; if (!el) return;
-      if (instant) return;
-      gsap.to(el, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: 'power2.out' });
-    });
-    if (st1) this._triggers.push(st1);
+    const cards = [
+      document.querySelector('.about-card-1'),
+      document.querySelector('.about-card-2'),
+      document.querySelector('.about-card-3'),
+      document.querySelector('.about-card-4'),
+      document.querySelector('.about-card-5')
+    ].filter(Boolean);
 
-    if (!prefersReducedMotion) {
-      const idleParallax = ScrollTrigger.create({
-        trigger: heroPinEl, start: 'bottom bottom', end: 'bottom top', scrub: true,
-        onUpdate: (self) => { photos.forEach((el, i) => { gsap.set(el, { y: (self.progress) * (8 + i * 3) }); }); },
-      });
-      this._triggers.push(idleParallax);
+    if (heroPinEl && cards.length > 0) {
+      if (prefersReducedMotion) {
+        cards.forEach(el => gsap.set(el, { opacity: 1, y: 0, scale: 1 }));
+      } else {
+        cards.forEach(el => gsap.set(el, { opacity: 0, y: 70, scale: 0.88 }));
+
+        const heroTl = gsap.timeline({ paused: true });
+        cards.forEach((card, idx) => {
+          heroTl.to(card, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: 'power2.out'
+          }, idx * 0.45);
+        });
+
+        const st1 = ScrollTrigger.create({
+          trigger: heroPinEl,
+          start: 'top top',
+          end: '+=140%',
+          pin: true,
+          scrub: 1,
+          anticipatePin: 1,
+          onUpdate: (self) => {
+            heroTl.progress(self.progress);
+          }
+        });
+
+        this._triggers.push(st1);
+      }
     }
 
     // ---------- Section 2: liquid-fill headline (reusing the About-section fill technique) ----------
