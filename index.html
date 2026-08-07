@@ -898,9 +898,7 @@ class Component extends DCLogic {
     };
     const switchFlavor = (dir) => {
       flavorIndex = (flavorIndex + dir + flavors.length) % flavors.length;
-      const tl = gsap.timeline();
-      tl.to(spinState, { val: spinState.val + dir * 360, duration: 0.5, ease: 'power2.out' }, 0)
-        .call(() => applyFlavor(flavorIndex));
+      applyFlavor(flavorIndex);
     };
     const prevBtn = document.getElementById('flavor-prev');
     const nextBtn = document.getElementById('flavor-next');
