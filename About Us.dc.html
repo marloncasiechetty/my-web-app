@@ -81,11 +81,26 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 5L19 19M19 5L5 19" stroke="#F4F2EA" stroke-width="1.6" stroke-linecap="round"></path></svg>
       </button>
       <nav style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;gap:1.6vw;align-items:center;">
-        <a class="menu-link" href="Soda.dc.html" style="opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;">Home</a>
-        <a class="menu-link" href="About Us.dc.html" style="opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;">About</a>
-        <a class="menu-link" href="Catalog.dc.html" style="opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;">Shop</a>
-        <a class="menu-link" href="#" style="opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;">Find Us</a>
-        <a class="menu-link" href="#" style="opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;">Blog</a>
+        <a class="menu-link" href="index.html" style="position:relative;display:inline-block;opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;overflow:hidden;padding:0 0.2em;">
+          <span style="position:relative;z-index:1;color:#050505;">Home</span>
+          <span class="menu-link-fill" aria-hidden="true" style="position:absolute;inset:0;z-index:2;color:#ED3500;clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%);pointer-events:none;white-space:nowrap;padding:0 0.2em;">Home</span>
+        </a>
+        <a class="menu-link" href="About Us.dc.html" style="position:relative;display:inline-block;opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;overflow:hidden;padding:0 0.2em;">
+          <span style="position:relative;z-index:1;color:#050505;">About</span>
+          <span class="menu-link-fill" aria-hidden="true" style="position:absolute;inset:0;z-index:2;color:#ED3500;clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%);pointer-events:none;white-space:nowrap;padding:0 0.2em;">About</span>
+        </a>
+        <a class="menu-link" href="Shop Now.dc.html" style="position:relative;display:inline-block;opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;overflow:hidden;padding:0 0.2em;">
+          <span style="position:relative;z-index:1;color:#050505;">Shop</span>
+          <span class="menu-link-fill" aria-hidden="true" style="position:absolute;inset:0;z-index:2;color:#ED3500;clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%);pointer-events:none;white-space:nowrap;padding:0 0.2em;">Shop</span>
+        </a>
+        <a class="menu-link" href="Get in Touch.dc.html" style="position:relative;display:inline-block;opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;overflow:hidden;padding:0 0.2em;">
+          <span style="position:relative;z-index:1;color:#050505;">Find Us</span>
+          <span class="menu-link-fill" aria-hidden="true" style="position:absolute;inset:0;z-index:2;color:#ED3500;clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%);pointer-events:none;white-space:nowrap;padding:0 0.2em;">Find Us</span>
+        </a>
+        <a class="menu-link" href="Blog.dc.html" style="position:relative;display:inline-block;opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;overflow:hidden;padding:0 0.2em;">
+          <span style="position:relative;z-index:1;color:#050505;">Blog</span>
+          <span class="menu-link-fill" aria-hidden="true" style="position:absolute;inset:0;z-index:2;color:#ED3500;clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%);pointer-events:none;white-space:nowrap;padding:0 0.2em;">Blog</span>
+        </a>
       </nav>
     </div>
   </div>
@@ -392,6 +407,54 @@ class Component extends DCLogic {
     if (menuClose) menuClose.addEventListener('click', closeMenu);
     menuLinks.forEach(el => el.addEventListener('click', closeMenu));
     document.addEventListener('keydown', onMenuKeydown);
+
+    // Liquid wave fill hover effect for full-screen menu links (80% fill on hover)
+    menuLinks.forEach((linkEl) => {
+      const fillEl = linkEl.querySelector('.menu-link-fill');
+      if (!fillEl) return;
+      const state = { p: 0, targetP: 0, phase: Math.random() * Math.PI * 2 };
+      let animFrameId = null;
+
+      const renderLinkClip = () => {
+        state.phase += 0.04;
+        state.p += (state.targetP - state.p) * 0.045;
+        const p = state.p;
+        const base = 100 - p * 100;
+        const amp = p > 0.02 ? 3.6 : 0;
+        const pts = [];
+        const N = 8;
+        for (let i = 0; i <= N; i++) {
+          const x = (i / N) * 100;
+          const y = base + Math.sin(state.phase + i * 1.1) * amp;
+          pts.push(`${x}% ${y}%`);
+        }
+        fillEl.style.clipPath = `polygon(${pts.join(',')}, 100% 100%, 0% 100%)`;
+
+        if (Math.abs(state.targetP - state.p) > 0.002 || state.targetP > 0) {
+          animFrameId = requestAnimationFrame(renderLinkClip);
+        } else {
+          state.p = state.targetP;
+          if (state.targetP === 0) {
+            fillEl.style.clipPath = 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)';
+          }
+          animFrameId = null;
+        }
+      };
+
+      const startAnim = () => {
+        if (!animFrameId) animFrameId = requestAnimationFrame(renderLinkClip);
+      };
+
+      linkEl.addEventListener('mouseenter', () => {
+        state.targetP = 0.8;
+        startAnim();
+      });
+
+      linkEl.addEventListener('mouseleave', () => {
+        state.targetP = 0;
+        startAnim();
+      });
+    });
 
     // ---------- shared step-reveal: pin a section, reveal N items in sequence as the user scrolls ----------
     const stepReveal = (pinEl, count, extraVh, onStep) => {
