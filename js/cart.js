@@ -26,12 +26,17 @@
 
   window.addToCart = function(name, priceStr, imageSrc) {
     const cart = getCart();
-    const price = parseFloat((priceStr || '$2.49').replace('$', '')) || 2.49;
+    let price = 420;
+    if (priceStr && typeof priceStr === 'string') {
+      const match = priceStr.match(/\d+(\.\d+)?/);
+      if (match) price = parseFloat(match[0]);
+    }
     const img = imageSrc || FLAVOR_IMAGES[name] || 'uploads/watermelon.png';
 
     const existing = cart.find(item => item.name.toLowerCase() === name.toLowerCase());
     if (existing) {
       existing.qty += 1;
+      existing.price = price;
     } else {
       cart.push({ name: name, price: price, qty: 1, image: img });
     }
@@ -94,7 +99,7 @@
     } else {
       if (emptyState) emptyState.style.display = 'none';
       if (footer) footer.style.display = 'block';
-      if (subtotalVal) subtotalVal.textContent = `$${subtotal.toFixed(2)}`;
+      if (subtotalVal) subtotalVal.textContent = `Rs. ${subtotal.toLocaleString()}`;
 
       list.querySelectorAll('.cart-item-row').forEach(el => el.remove());
 
@@ -106,7 +111,7 @@
           <img src="${item.image}" alt="${item.name}" style="width:48px;height:48px;object-fit:contain;background:#fff;border-radius:12px;padding:4px;flex-shrink:0;" />
           <div style="flex:1;min-width:0;">
             <div style="font-weight:700;font-size:0.95rem;color:#1F0A0A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${item.name}</div>
-            <div style="font-size:0.82rem;color:#888;margin-top:2px;">$${item.price.toFixed(2)} each</div>
+            <div style="font-size:0.82rem;color:#888;margin-top:2px;">Rs. ${item.price} each</div>
           </div>
           <div style="display:flex;align-items:center;gap:8px;background:#ffffff;border-radius:100px;padding:4px 8px;border:1px solid rgba(0,0,0,0.08);">
             <button onclick="window.updateCartQty('${item.name}', -1)" style="border:none;background:none;width:20px;height:20px;cursor:pointer;font-weight:bold;color:#555;display:flex;align-items:center;justify-content:center;">-</button>
