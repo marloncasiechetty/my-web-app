@@ -132,9 +132,12 @@
 
       <div class="shop-card-wrap" style="display:flex;flex-direction:column;gap:1rem;">
         <div class="shop-card" data-flavor="Watermelon" data-price="$2.49" style-hover="--fruit-o:1;--fruit-s:1;--fruit-t:opacity 0.3s ease 0.15s,transform 0.3s ease 0.15s;" style="position:relative;border-radius:22px;border:2px solid #D91E22;overflow:hidden;background:#ffffff;height:340px;">
-          <div class="shop-fill" style="position:absolute;left:-2px;right:-2px;top:-2px;bottom:-2px;background:#D91E22;z-index:1;overflow:hidden;pointer-events:none;clip-path:polygon(0% 70%, 100% 70%, 105% 105%, -5% 105%);">
-            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;"></span>
-            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;"></span>
+          <div class="shop-fill" style="position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;">
+            <svg preserveAspectRatio="none" viewBox="0 0 100 100" style="position:absolute;left:-1px;right:-1px;top:-1px;bottom:-1px;width:calc(100% + 2px);height:calc(100% + 2px);z-index:1;pointer-events:none;">
+              <path class="card-wave-path" fill="#D91E22"></path>
+            </svg>
+            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;z-index:2;"></span>
+            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;z-index:2;"></span>
           </div>
           <image-slot src="uploads/watermelon.png" placeholder="Watermelon" shape="rect" fit="contain" style="position:absolute;left:8%;top:20%;width:46%;height:46%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
           <image-slot src="uploads/watermelon-1.png" placeholder="Watermelon" shape="rect" fit="contain" style="position:absolute;right:6%;bottom:26%;width:40%;height:40%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
@@ -156,9 +159,12 @@
 
       <div class="shop-card-wrap" style="display:flex;flex-direction:column;gap:1rem;">
         <div class="shop-card" data-flavor="Pomegranate" data-price="$2.49" style-hover="--fruit-o:1;--fruit-s:1;--fruit-t:opacity 0.3s ease 0.15s,transform 0.3s ease 0.15s;" style="position:relative;border-radius:22px;border:2px solid #B5031F;overflow:hidden;background:#ffffff;height:340px;">
-          <div class="shop-fill" style="position:absolute;left:-2px;right:-2px;top:-2px;bottom:-2px;background:#B5031F;z-index:1;overflow:hidden;pointer-events:none;clip-path:polygon(0% 70%, 100% 70%, 105% 105%, -5% 105%);">
-            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;"></span>
-            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;"></span>
+          <div class="shop-fill" style="position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;">
+            <svg preserveAspectRatio="none" viewBox="0 0 100 100" style="position:absolute;left:-1px;right:-1px;top:-1px;bottom:-1px;width:calc(100% + 2px);height:calc(100% + 2px);z-index:1;pointer-events:none;">
+              <path class="card-wave-path" fill="#B5031F"></path>
+            </svg>
+            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;z-index:2;"></span>
+            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;z-index:2;"></span>
           </div>
           <image-slot src="uploads/pomegranate.png" placeholder="Pomegranate" shape="rect" fit="contain" style="position:absolute;left:8%;top:20%;width:46%;height:46%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
           <image-slot src="uploads/pomegranate-1.png" placeholder="Pomegranate" shape="rect" fit="contain" style="position:absolute;right:6%;bottom:26%;width:40%;height:40%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
@@ -180,9 +186,12 @@
 
       <div class="shop-card-wrap" style="display:flex;flex-direction:column;gap:1rem;">
         <div class="shop-card" data-flavor="Passionfruit" data-price="$2.49" style-hover="--fruit-o:1;--fruit-s:1;--fruit-t:opacity 0.3s ease 0.15s,transform 0.3s ease 0.15s;" style="position:relative;border-radius:22px;border:2px solid #C0B33F;overflow:hidden;background:#ffffff;height:340px;">
-          <div class="shop-fill" style="position:absolute;left:-2px;right:-2px;top:-2px;bottom:-2px;background:#C0B33F;z-index:1;overflow:hidden;pointer-events:none;clip-path:polygon(0% 70%, 100% 70%, 105% 105%, -5% 105%);">
-            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;"></span>
-            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;"></span>
+          <div class="shop-fill" style="position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;">
+            <svg preserveAspectRatio="none" viewBox="0 0 100 100" style="position:absolute;left:-1px;right:-1px;top:-1px;bottom:-1px;width:calc(100% + 2px);height:calc(100% + 2px);z-index:1;pointer-events:none;">
+              <path class="card-wave-path" fill="#C0B33F"></path>
+            </svg>
+            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;z-index:2;"></span>
+            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;z-index:2;"></span>
           </div>
           <image-slot src="uploads/passionfruit.png" placeholder="Passionfruit" shape="rect" fit="contain" style="position:absolute;left:8%;top:20%;width:46%;height:46%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
           <image-slot src="uploads/passionfruit-1.png" placeholder="Passionfruit" shape="rect" fit="contain" style="position:absolute;right:6%;bottom:26%;width:40%;height:40%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
@@ -204,9 +213,12 @@
 
       <div class="shop-card-wrap" style="display:flex;flex-direction:column;gap:1rem;">
         <div class="shop-card" data-flavor="Lime" data-price="$2.49" style-hover="--fruit-o:1;--fruit-s:1;--fruit-t:opacity 0.3s ease 0.15s,transform 0.3s ease 0.15s;" style="position:relative;border-radius:22px;border:2px solid #B9B842;overflow:hidden;background:#ffffff;height:340px;">
-          <div class="shop-fill" style="position:absolute;left:-2px;right:-2px;top:-2px;bottom:-2px;background:#B9B842;z-index:1;overflow:hidden;pointer-events:none;clip-path:polygon(0% 70%, 100% 70%, 105% 105%, -5% 105%);">
-            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;"></span>
-            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;"></span>
+          <div class="shop-fill" style="position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;">
+            <svg preserveAspectRatio="none" viewBox="0 0 100 100" style="position:absolute;left:-1px;right:-1px;top:-1px;bottom:-1px;width:calc(100% + 2px);height:calc(100% + 2px);z-index:1;pointer-events:none;">
+              <path class="card-wave-path" fill="#B9B842"></path>
+            </svg>
+            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;z-index:2;"></span>
+            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;z-index:2;"></span>
           </div>
           <image-slot src="uploads/lime.png" placeholder="Lime" shape="rect" fit="contain" style="position:absolute;left:8%;top:20%;width:46%;height:46%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
           <image-slot src="uploads/lime-1.png" placeholder="Lime" shape="rect" fit="contain" style="position:absolute;right:6%;bottom:26%;width:40%;height:40%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
@@ -228,9 +240,12 @@
 
       <div class="shop-card-wrap" style="display:flex;flex-direction:column;gap:1rem;">
         <div class="shop-card" data-flavor="Guava" data-price="$2.49" style-hover="--fruit-o:1;--fruit-s:1;--fruit-t:opacity 0.3s ease 0.15s,transform 0.3s ease 0.15s;" style="position:relative;border-radius:22px;border:2px solid #C73D50;overflow:hidden;background:#ffffff;height:340px;">
-          <div class="shop-fill" style="position:absolute;left:-2px;right:-2px;top:-2px;bottom:-2px;background:#C73D50;z-index:1;overflow:hidden;pointer-events:none;clip-path:polygon(0% 70%, 100% 70%, 105% 105%, -5% 105%);">
-            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;"></span>
-            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;"></span>
+          <div class="shop-fill" style="position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;">
+            <svg preserveAspectRatio="none" viewBox="0 0 100 100" style="position:absolute;left:-1px;right:-1px;top:-1px;bottom:-1px;width:calc(100% + 2px);height:calc(100% + 2px);z-index:1;pointer-events:none;">
+              <path class="card-wave-path" fill="#C73D50"></path>
+            </svg>
+            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;z-index:2;"></span>
+            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;z-index:2;"></span>
           </div>
           <image-slot src="uploads/guava.png" placeholder="Guava" shape="rect" fit="contain" style="position:absolute;left:8%;top:20%;width:46%;height:46%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
           <image-slot src="uploads/guava-1.png" placeholder="Guava" shape="rect" fit="contain" style="position:absolute;right:6%;bottom:26%;width:40%;height:40%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
@@ -252,9 +267,12 @@
 
       <div class="shop-card-wrap" style="display:flex;flex-direction:column;gap:1rem;">
         <div class="shop-card" data-flavor="Tamarind" data-price="$2.49" style-hover="--fruit-o:1;--fruit-s:1;--fruit-t:opacity 0.3s ease 0.15s,transform 0.3s ease 0.15s;" style="position:relative;border-radius:22px;border:2px solid #884D2F;overflow:hidden;background:#ffffff;height:340px;">
-          <div class="shop-fill" style="position:absolute;left:-2px;right:-2px;top:-2px;bottom:-2px;background:#884D2F;z-index:1;overflow:hidden;pointer-events:none;clip-path:polygon(0% 70%, 100% 70%, 105% 105%, -5% 105%);">
-            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;"></span>
-            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;"></span>
+          <div class="shop-fill" style="position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;">
+            <svg preserveAspectRatio="none" viewBox="0 0 100 100" style="position:absolute;left:-1px;right:-1px;top:-1px;bottom:-1px;width:calc(100% + 2px);height:calc(100% + 2px);z-index:1;pointer-events:none;">
+              <path class="card-wave-path" fill="#884D2F"></path>
+            </svg>
+            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;z-index:2;"></span>
+            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;z-index:2;"></span>
           </div>
           <image-slot src="uploads/tamarind.png" placeholder="Tamarind" shape="rect" fit="contain" style="position:absolute;left:8%;top:20%;width:46%;height:46%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
           <image-slot src="uploads/tamarind-1.png" placeholder="Tamarind" shape="rect" fit="contain" style="position:absolute;right:6%;bottom:26%;width:40%;height:40%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
@@ -505,15 +523,32 @@ class Component extends DCLogic {
       });
     });
 
-    // ---------- Liquid wave clip-path hover animation for Shop Cards & Add to Cart ----------
+    // ---------- Ultra-smooth SVG Bezier Liquid Wave animation for Shop Cards & Add to Cart ----------
+    const catmullPath = (pts) => {
+      let d = `M 0 100 L 0 ${pts[0][1].toFixed(2)}`;
+      for (let i = 0; i < pts.length - 1; i++) {
+        const p0 = pts[i - 1] || pts[i];
+        const p1 = pts[i];
+        const p2 = pts[i + 1];
+        const p3 = pts[i + 2] || p2;
+        const c1x = (p1[0] + (p2[0] - p0[0]) / 6).toFixed(2);
+        const c1y = (p1[1] + (p2[1] - p0[1]) / 6).toFixed(2);
+        const c2x = (p2[0] - (p3[0] - p1[0]) / 6).toFixed(2);
+        const c2y = (p2[1] - (p3[1] - p1[1]) / 6).toFixed(2);
+        d += ` C ${c1x} ${c1y}, ${c2x} ${c2y}, ${p2[0].toFixed(2)} ${p2[1].toFixed(2)}`;
+      }
+      d += ` L 100 100 Z`;
+      return d;
+    };
+
     const shopCardWraps = Array.from(document.querySelectorAll('.shop-card-wrap'));
     const cardCleanups = [];
 
     shopCardWraps.forEach((wrapEl) => {
       const cardEl = wrapEl.querySelector('.shop-card');
       if (!cardEl) return;
-      const fillEl = cardEl.querySelector('.shop-fill');
-      if (!fillEl) return;
+      const pathEl = cardEl.querySelector('.card-wave-path');
+      if (!pathEl) return;
 
       const state = { p: 0.30, targetP: 0.30, phase: Math.random() * Math.PI * 2 };
       let animFrameId = null;
@@ -524,15 +559,15 @@ class Component extends DCLogic {
         const p = state.p;
         const base = 100 - p * 100;
         const speedDiff = Math.abs(state.targetP - state.p);
-        const amp = speedDiff > 0.02 ? 5.0 : 2.5;
+        const amp = speedDiff > 0.02 ? 4.5 : 2.0;
         const pts = [];
-        const N = 10;
+        const N = 6;
         for (let i = 0; i <= N; i++) {
           const x = (i / N) * 100;
-          const y = base + Math.sin(state.phase + i * 1.0) * amp;
-          pts.push(`${x.toFixed(2)}% ${y.toFixed(2)}%`);
+          const y = base + Math.sin(state.phase + i * 1.05) * amp + Math.sin(state.phase * 1.6 + i * 2.1) * (amp * 0.35);
+          pts.push([x, y]);
         }
-        fillEl.style.clipPath = `polygon(${pts.join(',')}, 105% 105%, -5% 105%)`;
+        pathEl.setAttribute('d', catmullPath(pts));
 
         if (speedDiff > 0.001 || state.targetP > 0.30 || Math.abs(state.p - 0.30) > 0.002) {
           animFrameId = requestAnimationFrame(renderCardClip);
