@@ -159,43 +159,58 @@
     }
   };
 
-  document.addEventListener('DOMContentLoaded', function() {
+  function initCart() {
     updateCartUI();
+  }
 
-    // Event Listeners for Open / Close
-    const headerBtn = document.getElementById('header-cart-btn');
-    if (headerBtn) headerBtn.addEventListener('click', openCartDrawer);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCart);
+  } else {
+    initCart();
+  }
 
-    const menuCartTrigger = document.getElementById('menu-cart-trigger');
-    if (menuCartTrigger) menuCartTrigger.addEventListener('click', function(e) {
+  // Global click delegation for all cart triggers and actions
+  document.addEventListener('click', function(e) {
+    // Header cart button click
+    const headerBtn = e.target.closest('#header-cart-btn');
+    if (headerBtn) {
       e.preventDefault();
-      // Close nav menu overlay if open
+      openCartDrawer();
+      return;
+    }
+
+    // Full-screen nav menu cart option click
+    const menuCartTrigger = e.target.closest('#menu-cart-trigger');
+    if (menuCartTrigger) {
+      e.preventDefault();
       const closeNavBtn = document.getElementById('nav-menu-close');
       if (closeNavBtn) closeNavBtn.click();
       openCartDrawer();
-    });
+      return;
+    }
 
-    const closeBtn = document.getElementById('cart-close-btn');
-    if (closeBtn) closeBtn.addEventListener('click', closeCartDrawer);
+    // Cart drawer close button click
+    const closeBtn = e.target.closest('#cart-close-btn');
+    if (closeBtn) {
+      e.preventDefault();
+      closeCartDrawer();
+      return;
+    }
 
-    const backdrop = document.getElementById('cart-backdrop');
-    if (backdrop) backdrop.addEventListener('click', closeCartDrawer);
+    // Cart drawer backdrop click
+    const backdrop = e.target.closest('#cart-backdrop');
+    if (backdrop) {
+      e.preventDefault();
+      closeCartDrawer();
+      return;
+    }
 
-    const checkoutBtn = document.getElementById('checkout-btn');
-    if (checkoutBtn) checkoutBtn.addEventListener('click', function() {
+    // Checkout button click
+    const checkoutBtn = e.target.closest('#checkout-btn');
+    if (checkoutBtn) {
+      e.preventDefault();
       alert('Thank you for choosing Dose of Island! Checkout integration complete. 🍹');
-    });
-
-    // Delegate Add to Cart buttons across site
-    document.addEventListener('click', function(e) {
-      const btn = e.target.closest('.add-to-cart-btn');
-      if (btn) {
-        e.preventDefault();
-        const flavor = btn.getAttribute('data-flavor') || 'Pomegranate';
-        const price = btn.getAttribute('data-price') || '$2.49';
-        const img = btn.getAttribute('data-img') || FLAVOR_IMAGES[flavor];
-        window.addToCart(flavor, price, img);
-      }
-    });
+      return;
+    }
   });
 })();
