@@ -627,7 +627,7 @@ class Component extends DCLogic {
     menuLinks.forEach(el => el.addEventListener('click', closeMenu));
     document.addEventListener('keydown', onMenuKeydown);
 
-    // Liquid wave fill hover effect for full-screen menu links
+    // Liquid wave fill hover effect for full-screen menu links (80% fill on hover)
     menuLinks.forEach((linkEl) => {
       const fillEl = linkEl.querySelector('.menu-link-fill');
       if (!fillEl) return;
@@ -639,7 +639,7 @@ class Component extends DCLogic {
         state.p += (state.targetP - state.p) * 0.12;
         const p = state.p;
         const base = 100 - p * 100;
-        const amp = p > 0.02 && p < 0.98 ? 5.0 : 0;
+        const amp = p > 0.02 ? 3.6 : 0;
         const pts = [];
         const N = 8;
         for (let i = 0; i <= N; i++) {
@@ -649,14 +649,12 @@ class Component extends DCLogic {
         }
         fillEl.style.clipPath = `polygon(${pts.join(',')}, 100% 100%, 0% 100%)`;
 
-        if (Math.abs(state.targetP - state.p) > 0.002 || (state.targetP > 0 && state.p > 0.01)) {
+        if (Math.abs(state.targetP - state.p) > 0.002 || state.targetP > 0) {
           animFrameId = requestAnimationFrame(renderLinkClip);
         } else {
           state.p = state.targetP;
           if (state.targetP === 0) {
             fillEl.style.clipPath = 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)';
-          } else if (state.targetP === 1) {
-            fillEl.style.clipPath = 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)';
           }
           animFrameId = null;
         }
@@ -667,7 +665,7 @@ class Component extends DCLogic {
       };
 
       linkEl.addEventListener('mouseenter', () => {
-        state.targetP = 1;
+        state.targetP = 0.8;
         startAnim();
       });
 
