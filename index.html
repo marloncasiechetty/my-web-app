@@ -405,8 +405,8 @@
     <div id="cheers-ripple" style="position:absolute;top:60%;left:50%;width:10vmin;height:10vmin;transform:translate(-50%,-50%) scale(0.2);border-radius:50%;border:2px solid rgba(217,30,34,0.6);pointer-events:none;opacity:0;"></div>
     <div id="cheers-flash" style="position:absolute;top:60%;left:50%;width:12vmin;height:12vmin;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 70%);pointer-events:none;opacity:0;"></div>
 
-    <img id="cheers-hand-left" src="uploads/left.png" alt="" style="position:absolute;top:60%;left:0;width:64vw;max-width:920px;transform:translate(-100%,-50%) rotate(-4deg);pointer-events:none;">
-    <img id="cheers-hand-right" src="uploads/right.png" alt="" style="position:absolute;top:60%;right:0;width:64vw;max-width:920px;transform:translate(100%,-50%) rotate(4deg);pointer-events:none;">
+    <img id="cheers-hand-left" src="uploads/left.png" alt="" style="position:absolute;top:60%;left:0;width:68vw;max-width:980px;transform:translate(-100%,-50%) rotate(-4deg);pointer-events:none;">
+    <img id="cheers-hand-right" src="uploads/right.png" alt="" style="position:absolute;top:60%;right:0;width:68vw;max-width:980px;transform:translate(100%,-50%) rotate(4deg);pointer-events:none;">
   </div>
 
 </section>
@@ -697,21 +697,37 @@ class Component extends DCLogic {
     const playCheersPunch = () => {
       cheersHandLeft.style.transition = 'transform 0.22s cubic-bezier(0.34,1.56,0.64,1)';
       cheersHandRight.style.transition = 'transform 0.22s cubic-bezier(0.34,1.56,0.64,1)';
-      cheersHandLeft.style.transform = 'translate(-6%,-50%) rotate(-4deg) scale(1.05)';
-      cheersHandRight.style.transform = 'translate(6%,-50%) rotate(4deg) scale(1.05)';
+      cheersHandLeft.style.transform = 'translate(22%,-50%) rotate(-4deg) scale(1.06)';
+      cheersHandRight.style.transform = 'translate(-22%,-50%) rotate(4deg) scale(1.06)';
       setTimeout(() => {
-        cheersHandLeft.style.transform = 'translate(-6%,-50%) rotate(-4deg) scale(1)';
-        cheersHandRight.style.transform = 'translate(6%,-50%) rotate(4deg) scale(1)';
+        cheersHandLeft.style.transform = 'translate(22%,-50%) rotate(-4deg) scale(1)';
+        cheersHandRight.style.transform = 'translate(-22%,-50%) rotate(4deg) scale(1)';
       }, 220);
       cheersFlash.style.transition = 'opacity 0.15s ease';
       cheersFlash.style.opacity = '1';
-      setTimeout(() => { cheersFlash.style.opacity = '0'; }, 200);
+      setTimeout(() => { cheersFlash.style.opacity = '0'; }, 220);
       cheersRipple.style.transition = 'none';
       cheersRipple.style.transform = 'translate(-50%,-50%) scale(0.2)';
-      cheersRipple.style.opacity = '0.7';
+      cheersRipple.style.opacity = '0.85';
       void cheersRipple.offsetHeight;
-      cheersRipple.style.animation = 'cheersRipple 0.6s ease-out forwards';
-      setTimeout(() => { cheersRipple.style.animation = ''; }, 620);
+      cheersRipple.style.animation = 'cheersRipple 0.65s ease-out forwards';
+      setTimeout(() => { cheersRipple.style.animation = ''; }, 650);
+
+      for (let i = 0; i < 12; i++) {
+        const spark = document.createElement('div');
+        const angle = (i / 12) * Math.PI * 2 + (Math.random() * 0.4 - 0.2);
+        const speed = 40 + Math.random() * 60;
+        const dx = Math.cos(angle) * speed;
+        const dy = Math.sin(angle) * speed;
+        spark.style.cssText = `position:absolute;top:60%;left:50%;width:6px;height:6px;border-radius:50%;background:#ffffff;box-shadow:0 0 10px #ED3500, 0 0 18px #ffffff;pointer-events:none;z-index:10;transition:transform 0.5s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 0.5s ease;transform:translate(-50%,-50%) translate(0px,0px) scale(1);opacity:1;`;
+        cheersShakeWrap.appendChild(spark);
+        requestAnimationFrame(() => {
+          spark.style.transform = `translate(-50%,-50%) translate(${dx}px,${dy}px) scale(0.2)`;
+          spark.style.opacity = '0';
+        });
+        setTimeout(() => spark.remove(), 520);
+      }
+
       if (!prefersReducedMotion) {
         cheersShakeWrap.style.animation = 'cheersShake 0.35s ease-out';
         setTimeout(() => { cheersShakeWrap.style.animation = ''; }, 360);
@@ -720,8 +736,8 @@ class Component extends DCLogic {
 
     if (cheersSection) {
       if (prefersReducedMotion) {
-        cheersHandLeft.style.transform = 'translate(0%,-50%) rotate(-4deg)';
-        cheersHandRight.style.transform = 'translate(0%,-50%) rotate(4deg)';
+        cheersHandLeft.style.transform = 'translate(22%,-50%) rotate(-4deg)';
+        cheersHandRight.style.transform = 'translate(-22%,-50%) rotate(4deg)';
       } else {
         gsap.registerPlugin(ScrollTrigger);
         cheersScrollTrigger = ScrollTrigger.create({
@@ -732,7 +748,7 @@ class Component extends DCLogic {
           scrub: 0.4,
           onUpdate: (self) => {
             const p = Math.min(self.progress / 0.9, 1);
-            const OVERLAP = -6;
+            const OVERLAP = -22;
             const handX = 100 - p * (100 + OVERLAP);
             cheersHandLeft.style.transform = `translate(${-handX}%,-50%) rotate(-4deg)`;
             cheersHandRight.style.transform = `translate(${handX}%,-50%) rotate(4deg)`;
