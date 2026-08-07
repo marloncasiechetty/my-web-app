@@ -896,11 +896,24 @@ class Component extends DCLogic {
         }));
       }
     };
+    let isFlavorAnimating = false;
     const switchFlavor = (dir) => {
+      if (isFlavorAnimating) return;
+      isFlavorAnimating = true;
       flavorIndex = (flavorIndex + dir + flavors.length) % flavors.length;
-      const tl = gsap.timeline();
-      tl.to(spinState, { val: spinState.val + dir * 360, duration: 0.5, ease: 'power2.out' }, 0)
-        .call(() => applyFlavor(flavorIndex));
+      const rollOutX = dir * -280;
+      const rollOutRot = dir * -360;
+      const rollInX = dir * 280;
+      const rollInRot = dir * 360;
+      const tl = gsap.timeline({ onComplete: () => { isFlavorAnimating = false; } });
+      tl.to(spinState, { val: spinState.val + dir * 360, duration: 0.38, ease: 'power2.in' }, 0)
+        .to(modelViewer, { x: rollOutX, rotation: rollOutRot, opacity: 0, duration: 0.35, ease: 'power2.in' }, 0)
+        .call(() => {
+          applyFlavor(flavorIndex);
+          gsap.set(modelViewer, { x: rollInX, rotation: rollInRot, opacity: 0 });
+        })
+        .to(spinState, { val: spinState.val + dir * 360, duration: 0.45, ease: 'power2.out' })
+        .to(modelViewer, { x: 0, rotation: 0, opacity: 1, duration: 0.45, ease: 'back.out(1.2)' }, '<');
     };
     const prevBtn = document.getElementById('flavor-prev');
     const nextBtn = document.getElementById('flavor-next');
@@ -1269,6 +1282,11 @@ class Component extends DCLogic {
     const goToCarouselFlavor = (newActive, dir) => {
       if (carouselAnimating || newActive === carouselActive) return;
       carouselAnimating = true;
+      const rollOutX = dir * -240;
+      const rollOutRot = dir * -360;
+      const rollInX = dir * 240;
+      const rollInRot = dir * 360;
+
       const applyCarouselFlavor = () => {
         carouselActive = newActive;
         const f = flavors[carouselActive];
@@ -1276,12 +1294,18 @@ class Component extends DCLogic {
         renderCarouselSlots();
         carouselNameEl.textContent = f.name;
         carouselDescEl.textContent = f.description;
-        carouselAnimating = false;
       };
-      if (prefersReducedMotion) { applyCarouselFlavor(); return; }
-      const tl = gsap.timeline();
-      tl.to(carouselSpinState, { val: carouselSpinState.val + dir * 360, duration: 0.5, ease: 'power2.out' }, 0)
-        .call(applyCarouselFlavor);
+      if (prefersReducedMotion) { applyCarouselFlavor(); carouselAnimating = false; return; }
+
+      const tl = gsap.timeline({ onComplete: () => { carouselAnimating = false; } });
+      tl.to(carouselSpinState, { val: carouselSpinState.val + dir * 360, duration: 0.38, ease: 'power2.in' }, 0)
+        .to(carouselCenterModel, { x: rollOutX, rotation: rollOutRot, opacity: 0, duration: 0.35, ease: 'power2.in' }, 0)
+        .call(() => {
+          applyCarouselFlavor();
+          gsap.set(carouselCenterModel, { x: rollInX, rotation: rollInRot, opacity: 0 });
+        })
+        .to(carouselSpinState, { val: carouselSpinState.val + dir * 360, duration: 0.45, ease: 'power2.out' })
+        .to(carouselCenterModel, { x: 0, rotation: 0, opacity: 1, duration: 0.45, ease: 'back.out(1.2)' }, '<');
     };
 
     const onCarouselSlotClick = (e) => {
