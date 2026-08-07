@@ -700,8 +700,10 @@ class Component extends DCLogic {
       cheersHandLeft.style.transform = 'translate(11.5%,-50%) rotate(-4deg) scale(1.06)';
       cheersHandRight.style.transform = 'translate(-11.5%,-50%) rotate(4deg) scale(1.06)';
       setTimeout(() => {
-        cheersHandLeft.style.transform = 'translate(11.5%,-50%) rotate(-4deg) scale(1)';
-        cheersHandRight.style.transform = 'translate(-11.5%,-50%) rotate(4deg) scale(1)';
+        if (cheersPunched) {
+          cheersHandLeft.style.transform = 'translate(11.5%,-50%) rotate(-4deg) scale(1)';
+          cheersHandRight.style.transform = 'translate(-11.5%,-50%) rotate(4deg) scale(1)';
+        }
       }, 220);
       cheersFlash.style.transition = 'opacity 0.15s ease';
       cheersFlash.style.opacity = '1';
@@ -740,23 +742,28 @@ class Component extends DCLogic {
         cheersHandRight.style.transform = 'translate(-11.5%,-50%) rotate(4deg)';
       } else {
         gsap.registerPlugin(ScrollTrigger);
+        const clamp = (val, min, max) => Math.max(min, Math.min(max, val));
         cheersScrollTrigger = ScrollTrigger.create({
           trigger: cheersSection,
           start: 'top top',
-          end: '+=70%',
+          end: '+=60%',
           pin: true,
-          scrub: 0.4,
+          scrub: 0.3,
           onUpdate: (self) => {
-            const p = Math.min(self.progress / 0.9, 1);
+            const rawP = clamp(self.progress, 0, 1);
+            const p = clamp(rawP / 0.85, 0, 1);
             const OVERLAP = -11.5;
             const handX = 100 - p * (100 + OVERLAP);
-            cheersHandLeft.style.transform = `translate(${-handX}%,-50%) rotate(-4deg)`;
-            cheersHandRight.style.transform = `translate(${handX}%,-50%) rotate(4deg)`;
-            if (self.progress >= 0.9 && !cheersPunched) {
+
+            if (rawP >= 0.85 && !cheersPunched) {
               cheersPunched = true;
               playCheersPunch();
-            } else if (self.progress < 0.9 && cheersPunched) {
-              cheersPunched = false;
+            } else if (rawP < 0.85) {
+              if (cheersPunched) cheersPunched = false;
+              cheersHandLeft.style.transition = 'none';
+              cheersHandRight.style.transition = 'none';
+              cheersHandLeft.style.transform = `translate(${-handX}%,-50%) rotate(-4deg)`;
+              cheersHandRight.style.transform = `translate(${handX}%,-50%) rotate(4deg)`;
             }
           },
         });
