@@ -405,8 +405,8 @@
     <div id="cheers-ripple" style="position:absolute;top:60%;left:50%;width:10vmin;height:10vmin;transform:translate(-50%,-50%) scale(0.2);border-radius:50%;border:2px solid rgba(217,30,34,0.6);pointer-events:none;opacity:0;"></div>
     <div id="cheers-flash" style="position:absolute;top:60%;left:50%;width:12vmin;height:12vmin;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 70%);pointer-events:none;opacity:0;"></div>
 
-    <img id="cheers-hand-left" src="uploads/left.png" alt="" style="position:absolute;top:60%;left:-8vw;width:66vw;transform:translate(-100%,-50%) rotate(-4deg);pointer-events:none;">
-    <img id="cheers-hand-right" src="uploads/right.png" alt="" style="position:absolute;top:60%;right:-8vw;width:66vw;transform:translate(100%,-50%) rotate(4deg);pointer-events:none;">
+    <img id="cheers-hand-left" src="uploads/left.png" alt="" style="position:absolute;top:60%;left:-5vw;width:60vw;transform:translate(-100%,-50%) rotate(-4deg);pointer-events:none;">
+    <img id="cheers-hand-right" src="uploads/right.png" alt="" style="position:absolute;top:60%;right:-5vw;width:60vw;transform:translate(100%,-50%) rotate(4deg);pointer-events:none;">
   </div>
 
 </section>
@@ -697,12 +697,12 @@ class Component extends DCLogic {
     const playCheersPunch = () => {
       cheersHandLeft.style.transition = 'transform 0.22s cubic-bezier(0.34,1.56,0.64,1)';
       cheersHandRight.style.transition = 'transform 0.22s cubic-bezier(0.34,1.56,0.64,1)';
-      cheersHandLeft.style.transform = 'translate(12%,-50%) rotate(-4deg) scale(1.06)';
-      cheersHandRight.style.transform = 'translate(-12%,-50%) rotate(4deg) scale(1.06)';
+      cheersHandLeft.style.transform = 'translate(8%,-50%) rotate(-4deg) scale(1.06)';
+      cheersHandRight.style.transform = 'translate(-8%,-50%) rotate(4deg) scale(1.06)';
       setTimeout(() => {
         if (cheersPunched) {
-          cheersHandLeft.style.transform = 'translate(12%,-50%) rotate(-4deg) scale(1)';
-          cheersHandRight.style.transform = 'translate(-12%,-50%) rotate(4deg) scale(1)';
+          cheersHandLeft.style.transform = 'translate(8%,-50%) rotate(-4deg) scale(1)';
+          cheersHandRight.style.transform = 'translate(-8%,-50%) rotate(4deg) scale(1)';
         }
       }, 220);
       cheersFlash.style.transition = 'opacity 0.15s ease';
@@ -738,8 +738,8 @@ class Component extends DCLogic {
 
     if (cheersSection) {
       if (prefersReducedMotion) {
-        cheersHandLeft.style.transform = 'translate(12%,-50%) rotate(-4deg)';
-        cheersHandRight.style.transform = 'translate(-12%,-50%) rotate(4deg)';
+        cheersHandLeft.style.transform = 'translate(8%,-50%) rotate(-4deg)';
+        cheersHandRight.style.transform = 'translate(-8%,-50%) rotate(4deg)';
       } else {
         gsap.registerPlugin(ScrollTrigger);
         const clamp = (val, min, max) => Math.max(min, Math.min(max, val));
@@ -751,7 +751,7 @@ class Component extends DCLogic {
           scrub: 0.3,
           onUpdate: (self) => {
             const p = clamp(self.progress, 0, 1);
-            const OVERLAP = -12;
+            const OVERLAP = -8;
             const handX = 100 - p * (100 + OVERLAP);
 
             if (p >= 0.95 && !cheersPunched) {
