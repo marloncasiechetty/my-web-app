@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Now | Dose of Island</title>
+  <link rel="preload" as="fetch" href="uploads/pomegrenate.glb" crossorigin="anonymous">
+  <link rel="preload" as="fetch" href="uploads/watermelon.glb" crossorigin="anonymous">
+  <link rel="preload" as="fetch" href="uploads/passionfruit.glb" crossorigin="anonymous">
+  <link rel="preload" as="fetch" href="uploads/Lime.glb" crossorigin="anonymous">
+  <link rel="preload" as="fetch" href="uploads/guava.glb" crossorigin="anonymous">
+  <link rel="preload" as="fetch" href="uploads/tamarind.glb" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Inter:wght@400;500&family=Manrope:wght@400;700&family=Galada&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    @font-face { font-family: 'Florensans'; src: url('uploads/Florensans.ttf') format('truetype'); font-display: swap; }
+    html, body { margin: 0; padding: 0; }
+    image-slot::part(ring) { display: none !important; }
+    image-slot::part(frame) { background: transparent !important; }
+    a { color: #B5031F; }
+    a:hover { color: #8C0016; }
+    @keyframes liquidWaveDrift { 0% { transform: translateX(0); } 100% { transform: translateX(-20px); } }
+    @keyframes btnBubbleRise { 0% { transform: translate(0,0); opacity: 0; } 15% { opacity: 0.8; } 100% { transform: translate(6px,-34px); opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) {
+      .shop-card, .shop-card * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</helmet>
+
+<div id="shop-root" style="position:relative;width:100%;font-family:'Inter',sans-serif;background:#ffffff;color:#1F0A0A;overflow:hidden;">
+
+  <header style="display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px;position:absolute;top:16px;left:16px;right:16px;border-radius:16px;background:#F6F6F6;z-index:100;box-sizing:border-box;">
+    <div style="display:flex;align-items:center;gap:32px;flex-shrink:0;">
+      <button id="nav-menu-btn" aria-label="Menu" aria-expanded="false" style="width:24px;height:24px;flex-shrink:0;padding:0;border:none;background:none;color:#000000;cursor:pointer;display:flex;align-items:center;justify-content:center;position:relative;">
+        <svg id="menu-icon-bars" width="19" height="15" viewBox="0 0 19 15" fill="none" style="position:absolute;transition:opacity 0.2s ease;"><path d="M1 1.5h17M1 7.5h17M1 13.5h17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+        <svg id="menu-icon-x" width="19" height="15" viewBox="0 0 19 15" fill="none" style="position:absolute;opacity:0;transition:opacity 0.2s ease;"><path d="M2 1.5L17 13.5M17 1.5L2 13.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
+      </button>
+    </div>
+    <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
+      <svg viewBox="0 0 603.93 80.86" xmlns="http://www.w3.org/2000/svg" fill="currentColor" style="height:24px;width:auto;color:#000000;flex-shrink:0;">
+        <g>
+          <path d="M14.04,1.43c6.31,0,12.18.78,17.6,2.34,5.42,1.56,10.36,4.46,14.82,8.69,3.71,3.56,6.48,7.76,8.3,12.59,1.82,4.83,2.73,9.95,2.73,15.38,0,5.42-.91,10.55-2.73,15.37-1.82,4.83-4.59,9.02-8.3,12.59-4.46,4.23-9.4,7.13-14.82,8.69-5.42,1.56-11.29,2.34-17.6,2.34H0s0-77.99,0-77.99h14.04ZM8.36,5.89v69.08s6.13,0,6.13,0c5.5,0,10.34-.87,14.54-2.62,4.19-1.74,7.72-4.14,10.58-7.19,2.86-3.04,4.99-6.68,6.41-10.92,1.41-4.23,2.12-8.84,2.12-13.82,0-4.98-.71-9.58-2.12-13.82-1.41-4.23-3.55-7.87-6.41-10.92-2.86-3.04-6.39-5.44-10.58-7.19-4.2-1.74-9.04-2.62-14.54-2.62h-6.13Z"></path>
+          <path d="M102.61.1h.56c5.72,0,11.03,1.02,15.93,3.06,4.9,2.04,9.14,4.89,12.7,8.52,3.56,3.64,6.35,7.91,8.36,12.81,2.01,4.9,3.01,10.21,3.01,15.93,0,5.72-1,11.05-3.01,15.99-2.01,4.94-4.79,9.21-8.36,12.81-3.57,3.6-7.8,6.43-12.7,8.47-4.9,2.04-10.25,3.06-16.04,3.06h-.56c-5.72,0-11.03-1.02-15.93-3.06-4.9-2.04-9.14-4.86-12.7-8.47-3.57-3.6-6.35-7.87-8.36-12.81-2.01-4.94-3.01-10.27-3.01-15.99,0-5.72,1-11.05,3.01-15.99,2.01-4.94,4.79-9.21,8.36-12.81,3.57-3.6,7.8-6.42,12.7-8.47C91.47,1.12,96.82.1,102.61.1ZM102.84,75.97c4.38.07,8.45-.78,12.2-2.56,3.75-1.78,6.98-4.27,9.69-7.46,2.71-3.19,4.83-6.96,6.35-11.31,1.52-4.35,2.28-9.08,2.28-14.21,0-5.13-.76-9.86-2.28-14.21-1.52-4.35-3.64-8.12-6.35-11.31-2.71-3.19-5.94-5.66-9.69-7.41-3.75-1.74-7.82-2.62-12.2-2.62-4.38,0-8.45.87-12.2,2.62-3.75,1.75-6.98,4.22-9.69,7.41-2.71,3.19-4.83,6.96-6.35,11.31-1.52,4.34-2.28,9.08-2.28,14.21,0,5.12.76,9.86,2.28,14.21,1.52,4.35,3.64,8.12,6.35,11.31,2.71,3.19,5.94,5.68,9.69,7.46,3.75,1.78,7.82,2.64,12.2,2.56Z"></path>
+          <path d="M152.97,62.82c1.93,2.97,3.73,5.29,5.4,6.96,1.67,1.67,3.68,3.17,6.02,4.51,2.34,1.34,4.88,1.86,7.63,1.56,2.23-.22,4.16-.93,5.79-2.12,1.63-1.19,2.82-2.75,3.57-4.68.89-2.38,1.04-4.85.45-7.41-.6-2.56-1.86-4.92-3.79-7.07-2.38-2.6-4.75-5.11-7.13-7.52-2.38-2.41-4.98-4.92-7.8-7.52l-1.67-1.56c-3.27-3.12-5.85-6.09-7.74-8.91-1.89-2.82-3.03-5.64-3.4-8.47-.37-2.82-.13-5.48.73-7.97.85-2.49,2.24-4.7,4.18-6.63,2.08-2.08,4.47-3.62,7.19-4.62,2.71-1,5.48-1.39,8.3-1.17,2.52.22,4.77.8,6.74,1.73,1.97.93,3.64,1.91,5.01,2.95,1.37,1.04,2.8,2.41,4.29,4.12l-7.13,5.79c-.45-.59-1.06-1.41-1.84-2.45-.78-1.04-1.73-2.08-2.84-3.12-1.11-1.04-2.36-1.95-3.73-2.73-1.38-.78-2.84-1.17-4.4-1.17-1.71,0-3.31.46-4.79,1.39-1.49.93-2.64,2.14-3.45,3.62-.82,1.63-1.21,3.38-1.17,5.24.04,1.86.58,3.75,1.62,5.68.67,1.11,1.58,2.38,2.73,3.79,1.15,1.41,2.43,2.82,3.84,4.23,1.41,1.41,2.84,2.82,4.29,4.23,1.45,1.41,2.8,2.68,4.07,3.79,1.56,1.41,3.14,2.86,4.74,4.35,1.6,1.49,3.12,3.05,4.57,4.68,1.45,1.63,2.71,3.34,3.79,5.13,1.08,1.78,1.87,3.64,2.4,5.57.74,2.82.93,5.51.56,8.08-.37,2.56-1.23,4.88-2.56,6.96-1.93,2.9-4.57,5.07-7.91,6.52s-6.87,2.17-10.59,2.17c-3.86,0-7.22-.63-10.08-1.89-2.86-1.26-5.24-2.68-7.13-4.23-1.89-1.56-3.81-3.64-5.74-6.24l7.02-5.57Z"></path>
+          <path d="M199.21,1.43h36.21s0,4.46,0,4.46h-27.85s0,36.77,0,36.77h24.4s0,4.46,0,4.46h-24.4s0,27.85,0,27.85h29.64s0,4.46,0,4.46h-37.99s0-77.99,0-77.99Z"></path>
+          <path d="M332.01,79.42h-8.36s0-77.99,0-77.99h8.36s0,77.99,0,77.99Z"></path>
+          <path d="M347.39,62.82c1.93,2.97,3.73,5.29,5.4,6.96,1.67,1.67,3.68,3.17,6.02,4.51,2.34,1.34,4.88,1.86,7.63,1.56,2.23-.22,4.16-.93,5.79-2.12,1.63-1.19,2.82-2.75,3.57-4.68.89-2.38,1.04-4.85.45-7.41-.6-2.56-1.86-4.92-3.79-7.07-2.38-2.6-4.75-5.11-7.13-7.52-2.38-2.41-4.98-4.92-7.8-7.52l-1.67-1.56c-3.27-3.12-5.85-6.09-7.74-8.91-1.89-2.82-3.03-5.64-3.4-8.47-.37-2.82-.13-5.48.73-7.97.85-2.49,2.24-4.7,4.18-6.63,2.08-2.08,4.47-3.62,7.19-4.62,2.71-1,5.48-1.39,8.3-1.17,2.52.22,4.77.8,6.74,1.73,1.97.93,3.64,1.91,5.01,2.95,1.37,1.04,2.8,2.41,4.29,4.12l-7.13,5.79c-.45-.59-1.06-1.41-1.84-2.45-.78-1.04-1.73-2.08-2.84-3.12-1.11-1.04-2.36-1.95-3.73-2.73-1.38-.78-2.84-1.17-4.4-1.17-1.71,0-3.31.46-4.79,1.39-1.49.93-2.64,2.14-3.45,3.62-.82,1.63-1.21,3.38-1.17,5.24.04,1.86.58,3.75,1.62,5.68.67,1.11,1.58,2.38,2.73,3.79,1.15,1.41,2.43,2.82,3.84,4.23,1.41,1.41,2.84,2.82,4.29,4.23,1.45,1.41,2.8,2.68,4.07,3.79,1.56,1.41,3.14,2.86,4.74,4.35,1.6,1.49,3.12,3.05,4.57,4.68,1.45,1.63,2.71,3.34,3.79,5.13,1.08,1.78,1.87,3.64,2.4,5.57.74,2.82.93,5.51.56,8.08-.37,2.56-1.23,4.88-2.56,6.96-1.93,2.9-4.57,5.07-7.91,6.52-3.34,1.45-6.87,2.17-10.59,2.17-3.86,0-7.22-.63-10.08-1.89-2.86-1.26-5.24-2.68-7.13-4.23-1.89-1.56-3.81-3.64-5.74-6.24l7.02-5.57Z"></path>
+          <path d="M412.51,79.42h-19s0-77.99,0-77.99h8.36s0,73.54,0,73.54h10.64s0,4.46,0,4.46Z"></path>
+          <path d="M440.15.1h1.89s23.29,79.33,23.29,79.33h-8.69s-3.45-11.59-3.45-11.59h-27.63s-3.23,11.59-3.23,11.59h-4.68S440.15.1,440.15.1ZM426.89,63.38h24.96s-12.7-43.34-12.7-43.34l-12.26,43.34Z"></path>
+          <path d="M473.13,79.42V1.43s5.01,0,5.01,0l38.33,58.72V1.43s4.46,0,4.46,0v79.33s-1.89,0-1.89,0l-41.45-63.62v62.28s-4.46,0-4.46,0Z"></path>
+          <path d="M547.77,1.43c6.31,0,12.18.78,17.6,2.34,5.42,1.56,10.36,4.46,14.82,8.69,3.71,3.56,6.48,7.76,8.3,12.59,1.82,4.83,2.73,9.95,2.73,15.38,0,5.42-.91,10.55-2.73,15.37-1.82,4.83-4.59,9.02-8.3,12.59-4.46,4.23-9.4,7.13-14.82,8.69-5.42,1.56-11.29,2.34-17.6,2.34h-14.04s0-77.99,0-77.99h14.04ZM542.09,5.89v69.08s6.13,0,6.13,0c5.5,0,10.34-.87,14.54-2.62,4.19-1.74,7.72-4.14,10.58-7.19,2.86-3.04,4.99-6.68,6.41-10.92,1.41-4.23,2.12-8.84,2.12-13.82,0-4.98-.71-9.58-2.12-13.82-1.41-4.23-3.55-7.87-6.41-10.92-2.86-3.04-6.39-5.44-10.58-7.19-4.2-1.74-9.04-2.62-14.54-2.62h-6.13Z"></path>
+          <path d="M597.91,68.62c1.78,0,3.23.56,4.35,1.67,1.11,1.11,1.67,2.56,1.67,4.34,0,1.78-.54,3.25-1.62,4.4-1.08,1.15-2.55,1.73-4.4,1.73-1.78,0-3.25-.58-4.4-1.73-1.15-1.15-1.73-2.62-1.73-4.4,0-1.71.59-3.14,1.78-4.29,1.19-1.15,2.64-1.73,4.34-1.73Z"></path>
+          <path d="M247.47,52.95c0-14.77,11.2-31.18,21.54-31.18,5.75,0,9.17,4.9,9.17,12.13,0,14.69-11.27,30.87-21.69,30.87-5.75,0-9.02-4.59-9.02-11.82ZM257.88,62.67c7.08,0,15.39-16.02,15.39-29.16,0-5.36-1.56-9.64-5.68-9.64-7.08,0-15.32,16.33-15.32,29.39,0,5.36,1.48,9.41,5.6,9.41Z"></path>
+          <path d="M260.06,78.06c0-1.56,1.32-3.03,3.58-3.03,3.03,0,4.28,2.25,6.61,2.25,4.66,0,7.08-5.6,11.35-19.75l9.64-31.72c.31-1.01.23-1.71-1.17-1.71h-4.9c-1.09,0-.78-1.24.31-1.24,4.04,0,6.76-.47,7.7-3.42l.62-2.02C296.68,8.09,300.02,0,309.82,0c3.19,0,5.68,1.48,5.68,3.34,0,1.4-.85,2.57-2.8,2.57-2.41,0-5.52-3.42-8.09-3.42-1.63,0-2.41,1.17-3.73,5.36-1.09,3.42-1.87,7.23-2.57,9.95l-.78,2.64c-.54,1.79,0,2.49,1.24,2.49,2.33,0,5.68-.62,7.23-.62,1.4,0,1.24,1.87-.39,1.87h-7.31c-1.01,0-2.02.39-2.49,1.79l-9.49,31.18c-4.04,13.14-11.35,23.71-21.85,23.71-2.64,0-4.43-1.17-4.43-2.8Z"></path>
+        </g>
+      </svg>
+    </div>
+    <a href="Catalog.dc.html" style-hover="box-shadow:inset 0 0 0 1.5px rgba(0,0,0,0.16);" style="display:flex;align-items:center;gap:0;padding:4px;border-radius:100px;background:#ffffff;box-shadow:inset 0 0 0 1.5px rgba(0,0,0,0.1);text-decoration:none;flex-shrink:0;transition:box-shadow 0.25s ease;">
+      <span style="padding:11px 14px;font-family:'Outfit',sans-serif;font-weight:500;font-size:14px;letter-spacing:-0.01em;color:#050505;white-space:nowrap;">Shop Now</span>
+      <span style="width:40px;height:40px;border-radius:50%;background:#ED3500;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4V10" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </span>
+    </a>
+  </header>
+
+  <div id="nav-menu-overlay" style="position:fixed;inset:0;z-index:1000;visibility:hidden;pointer-events:none;opacity:1;">
+    <svg id="menu-wave-svg" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;display:block;">
+      <path id="menu-wave-path" fill="#F4F2EA"></path>
+    </svg>
+    <div id="menu-wave-content" style="position:absolute;inset:0;opacity:0;">
+      <button id="nav-menu-close" aria-label="Close menu" style="position:absolute;top:1.53vw;left:1.53vw;width:3.33vw;height:3.33vw;min-width:44px;min-height:44px;border-radius:1.25vw;background:#ED3500;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 5L19 19M19 5L5 19" stroke="#F4F2EA" stroke-width="1.6" stroke-linecap="round"></path></svg>
+      </button>
+      <nav style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;gap:1.6vw;align-items:center;">
+        <a class="menu-link" href="Soda.dc.html" style="opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;">Home</a>
+        <a class="menu-link" href="About Us.dc.html" style="opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;">About</a>
+        <a class="menu-link" href="Catalog.dc.html" style="opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;">Shop</a>
+        <a class="menu-link" href="#" style="opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;">Find Us</a>
+        <a class="menu-link" href="#" style="opacity:0;transform:translateY(24px);font-family:'Florensans','Galada',cursive;font-weight:400;font-size:4.6vw;letter-spacing:-0.06em;line-height:1.1;color:#050505;text-decoration:none;">Blog</a>
+      </nav>
+    </div>
+  </div>
+
+  <section style="position:relative;width:100%;padding:calc(130px + 4vh) 6% 2rem;box-sizing:border-box;text-align:center;">
+    <h1 style="font-family:'Florensans','Galada',cursive;font-weight:400;font-size:clamp(2.6rem,6vw,5.6rem);color:#1F0A0A;margin:0 0 1rem;line-height:1.02;text-transform:uppercase;">Shop Now</h1>
+    <p style="color:rgba(31,10,10,0.55);font-size:1.05rem;line-height:1.6;max-width:560px;margin:0 auto;">Real fruit, zero sugar, six flavors built for island afternoons. Pick a can and add it to your cart.</p>
+  </section>
+
+  <section style="position:relative;width:100%;padding:2rem 6% 7rem;box-sizing:border-box;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2.2rem;max-width:1200px;margin:0 auto;">
+
+      <div class="shop-card-wrap" style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="shop-card" data-flavor="Watermelon" data-price="$2.49" style-hover="--fill-h:100%;--fill-t:height 0.4s cubic-bezier(0.22,1,0.36,1);--fill-a:running;--fruit-o:1;--fruit-s:1;--fruit-t:opacity 0.3s ease 0.15s,transform 0.3s ease 0.15s;" style="position:relative;border-radius:22px;border:2px solid #D91E22;overflow:hidden;background:#ffffff;height:340px;">
+          <div class="shop-fill" style="position:absolute;left:-2%;right:-2%;bottom:-2%;height:var(--fill-h,30%);background:#D91E22;transition:var(--fill-t,height 0.28s cubic-bezier(0.55,0,1,0.45));z-index:1;overflow:hidden;">
+            <span style="position:absolute;top:-9px;left:0;width:200%;height:18px;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2020%22%3E%3Cpath%20d%3D%22M0%2012%20Q10%202%2020%2012%20T40%2012%20V20%20H0%20Z%22%20fill%3D%22%23D91E22%22%2F%3E%3C%2Fsvg%3E');background-repeat:repeat-x;background-size:40px 20px;animation:liquidWaveDrift 1.6s linear infinite;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;top:-5px;left:0;width:200%;height:10px;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2020%22%3E%3Cpath%20d%3D%22M0%2012%20Q10%206%2020%2012%20T40%2012%20V20%20H0%20Z%22%20fill%3D%22%23D91E22%22%2F%3E%3C%2Fsvg%3E');background-repeat:repeat-x;background-size:26px 12px;opacity:0.6;animation:liquidWaveDrift 1s linear infinite reverse;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;animation-play-state:var(--fill-a,paused);"></span>
+          </div>
+          <image-slot src="uploads/watermelon.png" placeholder="Watermelon" shape="rect" fit="contain" style="position:absolute;left:8%;top:20%;width:46%;height:46%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
+          <image-slot src="uploads/watermelon-1.png" placeholder="Watermelon" shape="rect" fit="contain" style="position:absolute;right:6%;bottom:26%;width:40%;height:40%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
+          <model-viewer disable-zoom="" shadow-intensity="0" exposure="1.0" interaction-prompt="none" camera-orbit="0deg 90deg 380%" field-of-view="30deg" src="uploads/watermelon.glb" style="position:absolute;left:50%;bottom:20%;transform:translateX(-50%);width:60%;height:70%;outline:none;--progress-bar-color:transparent;--poster-color:transparent;z-index:3;pointer-events:none;"></model-viewer>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#1F0A0A;">Watermelon</span>
+          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#1F0A0A;">$2.49</span>
+        </div>
+        <div style="border-top:1px dotted rgba(31,10,10,0.3);"></div>
+        <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-size:0.82rem;color:rgba(31,10,10,0.55);">
+          <span>Size &amp; Calories</span><span>12 FL OZ / &lt;10 CAL</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-size:0.82rem;color:rgba(31,10,10,0.55);">
+          <span>Sugar</span><span>&lt;1G</span>
+        </div>
+        <button class="add-to-cart-btn" data-flavor="Watermelon" style-hover="background:#D91E22;color:#ffffff;" style="width:100%;padding:0.85rem;border-radius:100px;border:1.5px solid #D91E22;background:transparent;color:#D91E22;font-family:'Manrope',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.2s ease;">Add to Cart</button>
+      </div>
+
+      <div class="shop-card-wrap" style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="shop-card" data-flavor="Pomegranate" data-price="$2.49" style-hover="--fill-h:100%;--fill-t:height 0.4s cubic-bezier(0.22,1,0.36,1);--fill-a:running;--fruit-o:1;--fruit-s:1;--fruit-t:opacity 0.3s ease 0.15s,transform 0.3s ease 0.15s;" style="position:relative;border-radius:22px;border:2px solid #B5031F;overflow:hidden;background:#ffffff;height:340px;">
+          <div class="shop-fill" style="position:absolute;left:-2%;right:-2%;bottom:-2%;height:var(--fill-h,30%);background:#B5031F;transition:var(--fill-t,height 0.28s cubic-bezier(0.55,0,1,0.45));z-index:1;overflow:hidden;">
+            <span style="position:absolute;top:-9px;left:0;width:200%;height:18px;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2020%22%3E%3Cpath%20d%3D%22M0%2012%20Q10%202%2020%2012%20T40%2012%20V20%20H0%20Z%22%20fill%3D%22%23B5031F%22%2F%3E%3C%2Fsvg%3E');background-repeat:repeat-x;background-size:40px 20px;animation:liquidWaveDrift 1.6s linear infinite;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;top:-5px;left:0;width:200%;height:10px;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2020%22%3E%3Cpath%20d%3D%22M0%2012%20Q10%206%2020%2012%20T40%2012%20V20%20H0%20Z%22%20fill%3D%22%23B5031F%22%2F%3E%3C%2Fsvg%3E');background-repeat:repeat-x;background-size:26px 12px;opacity:0.6;animation:liquidWaveDrift 1s linear infinite reverse;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;animation-play-state:var(--fill-a,paused);"></span>
+          </div>
+          <image-slot src="uploads/pomegranate.png" placeholder="Pomegranate" shape="rect" fit="contain" style="position:absolute;left:8%;top:20%;width:46%;height:46%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
+          <image-slot src="uploads/pomegranate-1.png" placeholder="Pomegranate" shape="rect" fit="contain" style="position:absolute;right:6%;bottom:26%;width:40%;height:40%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
+          <model-viewer disable-zoom="" shadow-intensity="0" exposure="1.0" interaction-prompt="none" camera-orbit="0deg 90deg 380%" field-of-view="30deg" src="uploads/pomegrenate.glb" style="position:absolute;left:50%;bottom:20%;transform:translateX(-50%);width:60%;height:70%;outline:none;--progress-bar-color:transparent;--poster-color:transparent;z-index:3;pointer-events:none;"></model-viewer>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#1F0A0A;">Pomegranate</span>
+          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#1F0A0A;">$2.49</span>
+        </div>
+        <div style="border-top:1px dotted rgba(31,10,10,0.3);"></div>
+        <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-size:0.82rem;color:rgba(31,10,10,0.55);">
+          <span>Size &amp; Calories</span><span>12 FL OZ / &lt;10 CAL</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-size:0.82rem;color:rgba(31,10,10,0.55);">
+          <span>Sugar</span><span>&lt;1G</span>
+        </div>
+        <button class="add-to-cart-btn" data-flavor="Pomegranate" style-hover="background:#B5031F;color:#ffffff;" style="width:100%;padding:0.85rem;border-radius:100px;border:1.5px solid #B5031F;background:transparent;color:#B5031F;font-family:'Manrope',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.2s ease;">Add to Cart</button>
+      </div>
+
+      <div class="shop-card-wrap" style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="shop-card" data-flavor="Passionfruit" data-price="$2.49" style-hover="--fill-h:100%;--fill-t:height 0.4s cubic-bezier(0.22,1,0.36,1);--fill-a:running;--fruit-o:1;--fruit-s:1;--fruit-t:opacity 0.3s ease 0.15s,transform 0.3s ease 0.15s;" style="position:relative;border-radius:22px;border:2px solid #C0B33F;overflow:hidden;background:#ffffff;height:340px;">
+          <div class="shop-fill" style="position:absolute;left:-2%;right:-2%;bottom:-2%;height:var(--fill-h,30%);background:#C0B33F;transition:var(--fill-t,height 0.28s cubic-bezier(0.55,0,1,0.45));z-index:1;overflow:hidden;">
+            <span style="position:absolute;top:-9px;left:0;width:200%;height:18px;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2020%22%3E%3Cpath%20d%3D%22M0%2012%20Q10%202%2020%2012%20T40%2012%20V20%20H0%20Z%22%20fill%3D%22%23C0B33F%22%2F%3E%3C%2Fsvg%3E');background-repeat:repeat-x;background-size:40px 20px;animation:liquidWaveDrift 1.6s linear infinite;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;top:-5px;left:0;width:200%;height:10px;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2020%22%3E%3Cpath%20d%3D%22M0%2012%20Q10%206%2020%2012%20T40%2012%20V20%20H0%20Z%22%20fill%3D%22%23C0B33F%22%2F%3E%3C%2Fsvg%3E');background-repeat:repeat-x;background-size:26px 12px;opacity:0.6;animation:liquidWaveDrift 1s linear infinite reverse;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;animation-play-state:var(--fill-a,paused);"></span>
+          </div>
+          <image-slot src="uploads/passionfruit.png" placeholder="Passionfruit" shape="rect" fit="contain" style="position:absolute;left:8%;top:20%;width:46%;height:46%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
+          <image-slot src="uploads/passionfruit-1.png" placeholder="Passionfruit" shape="rect" fit="contain" style="position:absolute;right:6%;bottom:26%;width:40%;height:40%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
+          <model-viewer disable-zoom="" shadow-intensity="0" exposure="1.0" interaction-prompt="none" camera-orbit="0deg 90deg 380%" field-of-view="30deg" src="uploads/passionfruit.glb" style="position:absolute;left:50%;bottom:20%;transform:translateX(-50%);width:60%;height:70%;outline:none;--progress-bar-color:transparent;--poster-color:transparent;z-index:3;pointer-events:none;"></model-viewer>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#1F0A0A;">Passionfruit</span>
+          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#1F0A0A;">$2.49</span>
+        </div>
+        <div style="border-top:1px dotted rgba(31,10,10,0.3);"></div>
+        <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-size:0.82rem;color:rgba(31,10,10,0.55);">
+          <span>Size &amp; Calories</span><span>12 FL OZ / &lt;10 CAL</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-size:0.82rem;color:rgba(31,10,10,0.55);">
+          <span>Sugar</span><span>&lt;1G</span>
+        </div>
+        <button class="add-to-cart-btn" data-flavor="Passionfruit" style-hover="background:#C0B33F;color:#ffffff;" style="width:100%;padding:0.85rem;border-radius:100px;border:1.5px solid #C0B33F;background:transparent;color:#C0B33F;font-family:'Manrope',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.2s ease;">Add to Cart</button>
+      </div>
+
+      <div class="shop-card-wrap" style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="shop-card" data-flavor="Lime" data-price="$2.49" style-hover="--fill-h:100%;--fill-t:height 0.4s cubic-bezier(0.22,1,0.36,1);--fill-a:running;--fruit-o:1;--fruit-s:1;--fruit-t:opacity 0.3s ease 0.15s,transform 0.3s ease 0.15s;" style="position:relative;border-radius:22px;border:2px solid #B9B842;overflow:hidden;background:#ffffff;height:340px;">
+          <div class="shop-fill" style="position:absolute;left:-2%;right:-2%;bottom:-2%;height:var(--fill-h,30%);background:#B9B842;transition:var(--fill-t,height 0.28s cubic-bezier(0.55,0,1,0.45));z-index:1;overflow:hidden;">
+            <span style="position:absolute;top:-9px;left:0;width:200%;height:18px;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2020%22%3E%3Cpath%20d%3D%22M0%2012%20Q10%202%2020%2012%20T40%2012%20V20%20H0%20Z%22%20fill%3D%22%23B9B842%22%2F%3E%3C%2Fsvg%3E');background-repeat:repeat-x;background-size:40px 20px;animation:liquidWaveDrift 1.6s linear infinite;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;top:-5px;left:0;width:200%;height:10px;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2020%22%3E%3Cpath%20d%3D%22M0%2012%20Q10%206%2020%2012%20T40%2012%20V20%20H0%20Z%22%20fill%3D%22%23B9B842%22%2F%3E%3C%2Fsvg%3E');background-repeat:repeat-x;background-size:26px 12px;opacity:0.6;animation:liquidWaveDrift 1s linear infinite reverse;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;animation-play-state:var(--fill-a,paused);"></span>
+          </div>
+          <image-slot src="uploads/lime.png" placeholder="Lime" shape="rect" fit="contain" style="position:absolute;left:8%;top:20%;width:46%;height:46%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
+          <image-slot src="uploads/lime-1.png" placeholder="Lime" shape="rect" fit="contain" style="position:absolute;right:6%;bottom:26%;width:40%;height:40%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
+          <model-viewer disable-zoom="" shadow-intensity="0" exposure="1.0" interaction-prompt="none" camera-orbit="0deg 90deg 380%" field-of-view="30deg" src="uploads/Lime.glb" style="position:absolute;left:50%;bottom:20%;transform:translateX(-50%);width:60%;height:70%;outline:none;--progress-bar-color:transparent;--poster-color:transparent;z-index:3;pointer-events:none;"></model-viewer>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#1F0A0A;">Lime</span>
+          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#1F0A0A;">$2.49</span>
+        </div>
+        <div style="border-top:1px dotted rgba(31,10,10,0.3);"></div>
+        <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-size:0.82rem;color:rgba(31,10,10,0.55);">
+          <span>Size &amp; Calories</span><span>12 FL OZ / &lt;10 CAL</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-size:0.82rem;color:rgba(31,10,10,0.55);">
+          <span>Sugar</span><span>&lt;1G</span>
+        </div>
+        <button class="add-to-cart-btn" data-flavor="Lime" style-hover="background:#B9B842;color:#ffffff;" style="width:100%;padding:0.85rem;border-radius:100px;border:1.5px solid #B9B842;background:transparent;color:#B9B842;font-family:'Manrope',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.2s ease;">Add to Cart</button>
+      </div>
+
+      <div class="shop-card-wrap" style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="shop-card" data-flavor="Guava" data-price="$2.49" style-hover="--fill-h:100%;--fill-t:height 0.4s cubic-bezier(0.22,1,0.36,1);--fill-a:running;--fruit-o:1;--fruit-s:1;--fruit-t:opacity 0.3s ease 0.15s,transform 0.3s ease 0.15s;" style="position:relative;border-radius:22px;border:2px solid #C73D50;overflow:hidden;background:#ffffff;height:340px;">
+          <div class="shop-fill" style="position:absolute;left:-2%;right:-2%;bottom:-2%;height:var(--fill-h,30%);background:#C73D50;transition:var(--fill-t,height 0.28s cubic-bezier(0.55,0,1,0.45));z-index:1;overflow:hidden;">
+            <span style="position:absolute;top:-9px;left:0;width:200%;height:18px;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2020%22%3E%3Cpath%20d%3D%22M0%2012%20Q10%202%2020%2012%20T40%2012%20V20%20H0%20Z%22%20fill%3D%22%23C73D50%22%2F%3E%3C%2Fsvg%3E');background-repeat:repeat-x;background-size:40px 20px;animation:liquidWaveDrift 1.6s linear infinite;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;top:-5px;left:0;width:200%;height:10px;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2020%22%3E%3Cpath%20d%3D%22M0%2012%20Q10%206%2020%2012%20T40%2012%20V20%20H0%20Z%22%20fill%3D%22%23C73D50%22%2F%3E%3C%2Fsvg%3E');background-repeat:repeat-x;background-size:26px 12px;opacity:0.6;animation:liquidWaveDrift 1s linear infinite reverse;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;animation-play-state:var(--fill-a,paused);"></span>
+          </div>
+          <image-slot src="uploads/guava.png" placeholder="Guava" shape="rect" fit="contain" style="position:absolute;left:8%;top:20%;width:46%;height:46%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
+          <image-slot src="uploads/guava-1.png" placeholder="Guava" shape="rect" fit="contain" style="position:absolute;right:6%;bottom:26%;width:40%;height:40%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
+          <model-viewer disable-zoom="" shadow-intensity="0" exposure="1.0" interaction-prompt="none" camera-orbit="0deg 90deg 380%" field-of-view="30deg" src="uploads/guava.glb" style="position:absolute;left:50%;bottom:20%;transform:translateX(-50%);width:60%;height:70%;outline:none;--progress-bar-color:transparent;--poster-color:transparent;z-index:3;pointer-events:none;"></model-viewer>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#1F0A0A;">Guava</span>
+          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#1F0A0A;">$2.49</span>
+        </div>
+        <div style="border-top:1px dotted rgba(31,10,10,0.3);"></div>
+        <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-size:0.82rem;color:rgba(31,10,10,0.55);">
+          <span>Size &amp; Calories</span><span>12 FL OZ / &lt;10 CAL</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-size:0.82rem;color:rgba(31,10,10,0.55);">
+          <span>Sugar</span><span>&lt;1G</span>
+        </div>
+        <button class="add-to-cart-btn" data-flavor="Guava" style-hover="background:#C73D50;color:#ffffff;" style="width:100%;padding:0.85rem;border-radius:100px;border:1.5px solid #C73D50;background:transparent;color:#C73D50;font-family:'Manrope',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.2s ease;">Add to Cart</button>
+      </div>
+
+      <div class="shop-card-wrap" style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="shop-card" data-flavor="Tamarind" data-price="$2.49" style-hover="--fill-h:100%;--fill-t:height 0.4s cubic-bezier(0.22,1,0.36,1);--fill-a:running;--fruit-o:1;--fruit-s:1;--fruit-t:opacity 0.3s ease 0.15s,transform 0.3s ease 0.15s;" style="position:relative;border-radius:22px;border:2px solid #884D2F;overflow:hidden;background:#ffffff;height:340px;">
+          <div class="shop-fill" style="position:absolute;left:-2%;right:-2%;bottom:-2%;height:var(--fill-h,30%);background:#884D2F;transition:var(--fill-t,height 0.28s cubic-bezier(0.55,0,1,0.45));z-index:1;overflow:hidden;">
+            <span style="position:absolute;top:-9px;left:0;width:200%;height:18px;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2020%22%3E%3Cpath%20d%3D%22M0%2012%20Q10%202%2020%2012%20T40%2012%20V20%20H0%20Z%22%20fill%3D%22%23884D2F%22%2F%3E%3C%2Fsvg%3E');background-repeat:repeat-x;background-size:40px 20px;animation:liquidWaveDrift 1.6s linear infinite;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;top:-5px;left:0;width:200%;height:10px;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2020%22%3E%3Cpath%20d%3D%22M0%2012%20Q10%206%2020%2012%20T40%2012%20V20%20H0%20Z%22%20fill%3D%22%23884D2F%22%2F%3E%3C%2Fsvg%3E');background-repeat:repeat-x;background-size:26px 12px;opacity:0.6;animation:liquidWaveDrift 1s linear infinite reverse;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;bottom:20%;left:30%;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.6);animation:btnBubbleRise 1.1s ease-in infinite;animation-play-state:var(--fill-a,paused);"></span>
+            <span style="position:absolute;bottom:20%;left:62%;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.55);animation:btnBubbleRise 1.4s ease-in infinite;animation-delay:0.35s;animation-play-state:var(--fill-a,paused);"></span>
+          </div>
+          <image-slot src="uploads/tamarind.png" placeholder="Tamarind" shape="rect" fit="contain" style="position:absolute;left:8%;top:20%;width:46%;height:46%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
+          <image-slot src="uploads/tamarind-1.png" placeholder="Tamarind" shape="rect" fit="contain" style="position:absolute;right:6%;bottom:26%;width:40%;height:40%;opacity:var(--fruit-o,0);transform:scale(var(--fruit-s,0.8));transition:var(--fruit-t,opacity 0.2s ease,transform 0.2s ease);z-index:2;"></image-slot>
+          <model-viewer disable-zoom="" shadow-intensity="0" exposure="1.0" interaction-prompt="none" camera-orbit="0deg 90deg 380%" field-of-view="30deg" src="uploads/tamarind.glb" style="position:absolute;left:50%;bottom:20%;transform:translateX(-50%);width:60%;height:70%;outline:none;--progress-bar-color:transparent;--poster-color:transparent;z-index:3;pointer-events:none;"></model-viewer>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
+          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#1F0A0A;">Tamarind</span>
+          <span style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;color:#1F0A0A;">$2.49</span>
+        </div>
+        <div style="border-top:1px dotted rgba(31,10,10,0.3);"></div>
+        <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-size:0.82rem;color:rgba(31,10,10,0.55);">
+          <span>Size &amp; Calories</span><span>12 FL OZ / &lt;10 CAL</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-family:'Manrope',sans-serif;font-size:0.82rem;color:rgba(31,10,10,0.55);">
+          <span>Sugar</span><span>&lt;1G</span>
+        </div>
+        <button class="add-to-cart-btn" data-flavor="Tamarind" style-hover="background:#884D2F;color:#ffffff;" style="width:100%;padding:0.85rem;border-radius:100px;border:1.5px solid #884D2F;background:transparent;color:#884D2F;font-family:'Manrope',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:all 0.2s ease;">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <footer id="site-footer" style="position:relative;width:100%;background:#ffffff;padding:0 2.08% 3rem;box-sizing:border-box;font-family:'Inter',sans-serif;">
+    <div style="border-top:1px solid #000000;width:100%;"></div>
+    <div style="display:flex;flex-wrap:wrap;gap:2.5rem;padding:3.5rem 0 0;box-sizing:border-box;align-items:flex-start;">
+      <div style="display:flex;flex-direction:column;gap:0.85rem;min-width:150px;flex:1;">
+        <span style="font-family:'Inter',sans-serif;font-weight:600;font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;color:#141314;">Navigation</span>
+        <a href="Catalog.dc.html" style-hover="opacity:1;" style="color:#141314;opacity:0.6;text-decoration:none;font-family:'Inter',sans-serif;font-size:0.8rem;transition:opacity 0.2s ease;">Catalog</a>
+        <a href="#" style-hover="opacity:1;" style="color:#141314;opacity:0.6;text-decoration:none;font-family:'Inter',sans-serif;font-size:0.8rem;transition:opacity 0.2s ease;">Find Us</a>
+        <a href="#" style-hover="opacity:1;" style="color:#141314;opacity:0.6;text-decoration:none;font-family:'Inter',sans-serif;font-size:0.8rem;transition:opacity 0.2s ease;">FAQs</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.85rem;min-width:150px;flex:1;">
+        <span style="font-family:'Inter',sans-serif;font-weight:600;font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;color:#141314;">Legal Information</span>
+        <a href="#" style-hover="opacity:1;" style="color:#141314;opacity:0.6;text-decoration:none;font-family:'Inter',sans-serif;font-size:0.8rem;transition:opacity 0.2s ease;">Terms and Conditions</a>
+        <a href="#" style-hover="opacity:1;" style="color:#141314;opacity:0.6;text-decoration:none;font-family:'Inter',sans-serif;font-size:0.8rem;transition:opacity 0.2s ease;">Privacy Policy</a>
+      </div>
+      <div style="display:flex;flex-direction:column;flex:1.2;min-width:180px;align-items:center;">
+        <span style="font-family:'Fraunces','Georgia',serif;font-weight:500;font-size:2rem;line-height:1.05;color:#141314;text-align:center;">DOSE<span style="font-style:italic;font-weight:400;"> of</span><br>ISLAND.</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.85rem;min-width:190px;flex:1.3;">
+        <span style="font-family:'Inter',sans-serif;font-weight:600;font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;color:#141314;">Contact</span>
+        <span style="color:#141314;opacity:0.6;font-family:'Inter',sans-serif;font-size:0.8rem;line-height:1.6;">10/3 Greenland Lane,<br>Isipathana Mawatha, Colombo 05</span>
+        <a href="mailto:info@doseofisland.com" style-hover="opacity:1;" style="color:#141314;opacity:0.6;text-decoration:none;font-family:'Inter',sans-serif;font-size:0.8rem;transition:opacity 0.2s ease;">info@doseofisland.com</a>
+        <a href="tel:0768843875" style-hover="opacity:1;" style="color:#141314;opacity:0.6;text-decoration:none;font-family:'Inter',sans-serif;font-size:0.8rem;transition:opacity 0.2s ease;">076-8843875</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.85rem;min-width:150px;flex:1;">
+        <span style="font-family:'Inter',sans-serif;font-weight:600;font-size:0.7rem;letter-spacing:0.06em;text-transform:uppercase;color:#141314;">Social Networks</span>
+        <a href="#" style-hover="opacity:1;" style="color:#141314;opacity:0.6;text-decoration:none;font-family:'Inter',sans-serif;font-size:0.8rem;transition:opacity 0.2s ease;">Instagram</a>
+        <a href="#" style-hover="opacity:1;" style="color:#141314;opacity:0.6;text-decoration:none;font-family:'Inter',sans-serif;font-size:0.8rem;transition:opacity 0.2s ease;">TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  renderVals() { return {}; }
+
+  componentDidMount() {
+    const menuOverlay = document.getElementById('nav-menu-overlay');
+    const menuWaveSvg = document.getElementById('menu-wave-svg');
+    const menuWavePath = document.getElementById('menu-wave-path');
+    const menuContent = document.getElementById('menu-wave-content');
+    const menuLinks = Array.from(document.querySelectorAll('.menu-link'));
+    const menuBtn = document.getElementById('nav-menu-btn');
+    const menuClose = document.getElementById('nav-menu-close');
+    const menuIconBars = document.getElementById('menu-icon-bars');
+    const menuIconX = document.getElementById('menu-icon-x');
+    const menuReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let mvw = window.innerWidth, mvh = window.innerHeight;
+    const syncMenuSize = () => { mvw = window.innerWidth; mvh = window.innerHeight; menuWaveSvg.setAttribute('viewBox', '0 0 ' + mvw + ' ' + mvh); };
+    syncMenuSize();
+    window.addEventListener('resize', syncMenuSize);
+    const catmull = (pts) => {
+      let d = '';
+      for (let i = 0; i < pts.length - 1; i++) {
+        const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+        const c1x = p1[0] + (p2[0] - p0[0]) / 6, c1y = p1[1] + (p2[1] - p0[1]) / 6;
+        const c2x = p2[0] - (p3[0] - p1[0]) / 6, c2y = p2[1] - (p3[1] - p1[1]) / 6;
+        d += ' C' + c1x + ',' + c1y + ' ' + c2x + ',' + c2y + ' ' + p2[0] + ',' + p2[1];
+      }
+      return d;
+    };
+    const buildWave = (topY, amp, t) => {
+      const N = 6, pts = [];
+      for (let i = 0; i <= N; i++) {
+        const x = i / N * mvw;
+        const y = topY + amp * Math.sin(t + i * 1.05) + amp * 0.4 * Math.sin(t * 1.7 + i * 2.1);
+        pts.push([x, y]);
+      }
+      return 'M0,' + mvh + ' L0,' + pts[0][1] + catmull(pts) + ' L' + mvw + ',' + mvh + ' Z';
+    };
+    const easeOutCubic = (x) => 1 - Math.pow(1 - x, 3);
+    const easeInCubic = (x) => x * x * x;
+    const menuAnim = { id: null };
+    let waveState = 'closed';
+    let phase = 0, openStart = 0, closeStart = 0, contentTriggered = false;
+    const OPEN_MS = 620, CLOSE_MS = 460;
+    const triggerContentIn = () => {
+      menuContent.style.transition = 'opacity 0.3s ease';
+      menuContent.style.opacity = '1';
+      menuLinks.forEach((el, i) => {
+        setTimeout(() => {
+          el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, i * 70);
+      });
+    };
+    const resetContent = () => {
+      menuContent.style.transition = '';
+      menuContent.style.opacity = '0';
+      menuLinks.forEach(el => { el.style.transition = ''; el.style.opacity = '0'; el.style.transform = 'translateY(24px)'; });
+    };
+    const menuLoop = (now) => {
+      if (waveState === 'opening') {
+        const t = Math.min(1, (now - openStart) / OPEN_MS);
+        const e = easeOutCubic(t);
+        const topY = mvh - e * mvh;
+        const amp = 16 * (1 - t * 0.5);
+        phase += 0.12;
+        menuWavePath.setAttribute('d', buildWave(topY, amp, phase));
+        if (t >= 0.72 && !contentTriggered) { contentTriggered = true; triggerContentIn(); }
+        if (t >= 1) waveState = 'idle';
+      } else if (waveState === 'idle') {
+        phase += 0.015;
+        menuWavePath.setAttribute('d', buildWave(0, 5, phase));
+      } else if (waveState === 'closing') {
+        const t = Math.min(1, (now - closeStart) / CLOSE_MS);
+        const e = easeInCubic(t);
+        const topY = e * mvh;
+        const amp = 14 * (1 - t * 0.3);
+        phase += 0.12;
+        menuWavePath.setAttribute('d', buildWave(topY, amp, phase));
+        if (t >= 1) {
+          waveState = 'closed';
+          menuOverlay.style.visibility = 'hidden';
+          menuOverlay.style.pointerEvents = 'none';
+          document.body.style.overflow = '';
+          cancelAnimationFrame(menuAnim.id); menuAnim.id = null;
+          return;
+        }
+      }
+      menuAnim.id = requestAnimationFrame(menuLoop);
+    };
+    const openMenu = () => {
+      if (waveState === 'opening' || waveState === 'idle') return;
+      document.body.style.overflow = 'hidden';
+      menuOverlay.style.visibility = 'visible';
+      menuOverlay.style.pointerEvents = 'auto';
+      menuBtn.setAttribute('aria-expanded', 'true');
+      menuIconBars.style.opacity = '0';
+      menuIconX.style.opacity = '1';
+      if (menuReduceMotion) {
+        menuWavePath.setAttribute('d', 'M0,0 L' + mvw + ',0 L' + mvw + ',' + mvh + ' L0,' + mvh + ' Z');
+        menuContent.style.transition = 'opacity 0.25s ease';
+        menuContent.style.opacity = '1';
+        menuLinks.forEach(el => { el.style.transition = 'opacity 0.25s ease'; el.style.opacity = '1'; el.style.transform = 'translateY(0)'; });
+        waveState = 'idle';
+        return;
+      }
+      resetContent();
+      contentTriggered = false;
+      waveState = 'opening';
+      openStart = performance.now();
+      if (!menuAnim.id) menuAnim.id = requestAnimationFrame(menuLoop);
+    };
+    const closeMenu = () => {
+      if (waveState === 'closed' || waveState === 'closing') return;
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuIconBars.style.opacity = '1';
+      menuIconX.style.opacity = '0';
+      if (menuReduceMotion) {
+        menuContent.style.transition = 'opacity 0.2s ease';
+        menuContent.style.opacity = '0';
+        menuLinks.forEach(el => { el.style.transition = 'opacity 0.2s ease'; el.style.opacity = '0'; });
+        setTimeout(() => {
+          menuOverlay.style.visibility = 'hidden';
+          menuOverlay.style.pointerEvents = 'none';
+          document.body.style.overflow = '';
+        }, 200);
+        waveState = 'closed';
+        return;
+      }
+      menuContent.style.transition = 'opacity 0.18s ease';
+      menuContent.style.opacity = '0';
+      menuLinks.forEach(el => { el.style.transition = 'opacity 0.15s ease'; el.style.opacity = '0'; });
+      setTimeout(() => {
+        waveState = 'closing';
+        closeStart = performance.now();
+        if (!menuAnim.id) menuAnim.id = requestAnimationFrame(menuLoop);
+      }, 160);
+    };
+    const onMenuKeydown = (e) => { if (e.key === 'Escape' && waveState !== 'closed') closeMenu(); };
+    if (menuBtn) menuBtn.addEventListener('click', () => { waveState === 'closed' ? openMenu() : closeMenu(); });
+    if (menuClose) menuClose.addEventListener('click', closeMenu);
+    menuLinks.forEach(el => el.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', onMenuKeydown);
+
+    // ---------- Add to cart: shared localStorage cart count ----------
+    const addToCartBtns = Array.from(document.querySelectorAll('.add-to-cart-btn'));
+    const onAddToCart = (e) => {
+      const btn = e.currentTarget;
+      const flavor = btn.dataset.flavor;
+      const count = parseInt(localStorage.getItem('doi_cart_count') || '0', 10) + 1;
+      localStorage.setItem('doi_cart_count', String(count));
+      const cartItems = JSON.parse(localStorage.getItem('doi_cart_items') || '{}');
+      cartItems[flavor] = (cartItems[flavor] || 0) + 1;
+      localStorage.setItem('doi_cart_items', JSON.stringify(cartItems));
+      const original = btn.textContent;
+      btn.textContent = 'Added ✓';
+      btn.disabled = true;
+      setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 1100);
+    };
+    addToCartBtns.forEach(btn => btn.addEventListener('click', onAddToCart));
+
+    this._cleanup = () => {
+      window.removeEventListener('resize', syncMenuSize);
+      document.removeEventListener('keydown', onMenuKeydown);
+      if (menuAnim.id) cancelAnimationFrame(menuAnim.id);
+      document.body.style.overflow = '';
+      addToCartBtns.forEach(btn => btn.removeEventListener('click', onAddToCart));
+    };
+  }
+
+  componentWillUnmount() {
+    if (this._cleanup) this._cleanup();
+  }
+}
+
+</script>
+</body>
+</html>
