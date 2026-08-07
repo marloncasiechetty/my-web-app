@@ -746,19 +746,18 @@ class Component extends DCLogic {
         cheersScrollTrigger = ScrollTrigger.create({
           trigger: cheersSection,
           start: 'top top',
-          end: '+=60%',
+          end: '+=40%',
           pin: true,
           scrub: 0.3,
           onUpdate: (self) => {
-            const rawP = clamp(self.progress, 0, 1);
-            const p = clamp(rawP / 0.85, 0, 1);
+            const p = clamp(self.progress, 0, 1);
             const OVERLAP = -11.5;
             const handX = 100 - p * (100 + OVERLAP);
 
-            if (rawP >= 0.85 && !cheersPunched) {
+            if (p >= 0.95 && !cheersPunched) {
               cheersPunched = true;
               playCheersPunch();
-            } else if (rawP < 0.85) {
+            } else if (p < 0.95) {
               if (cheersPunched) cheersPunched = false;
               cheersHandLeft.style.transition = 'none';
               cheersHandRight.style.transition = 'none';
